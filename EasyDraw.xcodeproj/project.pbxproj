@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE1B9DC81D9C3DAF00CA90DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */; };
+		FE1B9DCA1D9C3DAF00CA90DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */; };
+		FE1B9DCD1D9C3DAF00CA90DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DCB1D9C3DAF00CA90DB /* Main.storyboard */; };
+		FE1B9DCF1D9C3DAF00CA90DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */; };
+		FE1B9DD21D9C3DAF00CA90DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DD01D9C3DAF00CA90DB /* LaunchScreen.storyboard */; };
+		FE1B9DDD1D9C3DAF00CA90DB /* EasyDrawTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B9DDC1D9C3DAF00CA90DB /* EasyDrawTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE1B9DD91D9C3DAF00CA90DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE1B9DBC1D9C3DAF00CA90DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE1B9DC31D9C3DAF00CA90DB;
+			remoteInfo = EasyDraw;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FE1B9DC41D9C3DAF00CA90DB /* EasyDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FE1B9DCC1D9C3DAF00CA90DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE1B9DD11D9C3DAF00CA90DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FE1B9DD31D9C3DAF00CA90DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE1B9DD81D9C3DAF00CA90DB /* EasyDrawTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyDrawTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE1B9DDC1D9C3DAF00CA90DB /* EasyDrawTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyDrawTests.swift; sourceTree = "<group>"; };
+		FE1B9DDE1D9C3DAF00CA90DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE1B9DC11D9C3DAF00CA90DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE1B9DD51D9C3DAF00CA90DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE1B9DBB1D9C3DAF00CA90DB = {
+			isa = PBXGroup;
+			children = (
+				FE1B9DC61D9C3DAF00CA90DB /* EasyDraw */,
+				FE1B9DDB1D9C3DAF00CA90DB /* EasyDrawTests */,
+				FE1B9DC51D9C3DAF00CA90DB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FE1B9DC51D9C3DAF00CA90DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE1B9DC41D9C3DAF00CA90DB /* EasyDraw.app */,
+				FE1B9DD81D9C3DAF00CA90DB /* EasyDrawTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE1B9DC61D9C3DAF00CA90DB /* EasyDraw */ = {
+			isa = PBXGroup;
+			children = (
+				FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */,
+				FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */,
+				FE1B9DCB1D9C3DAF00CA90DB /* Main.storyboard */,
+				FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */,
+				FE1B9DD01D9C3DAF00CA90DB /* LaunchScreen.storyboard */,
+				FE1B9DD31D9C3DAF00CA90DB /* Info.plist */,
+			);
+			path = EasyDraw;
+			sourceTree = "<group>";
+		};
+		FE1B9DDB1D9C3DAF00CA90DB /* EasyDrawTests */ = {
+			isa = PBXGroup;
+			children = (
+				FE1B9DDC1D9C3DAF00CA90DB /* EasyDrawTests.swift */,
+				FE1B9DDE1D9C3DAF00CA90DB /* Info.plist */,
+			);
+			path = EasyDrawTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE1B9DC31D9C3DAF00CA90DB /* EasyDraw */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE1B9DE11D9C3DAF00CA90DB /* Build configuration list for PBXNativeTarget "EasyDraw" */;
+			buildPhases = (
+				FE1B9DC01D9C3DAF00CA90DB /* Sources */,
+				FE1B9DC11D9C3DAF00CA90DB /* Frameworks */,
+				FE1B9DC21D9C3DAF00CA90DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyDraw;
+			productName = EasyDraw;
+			productReference = FE1B9DC41D9C3DAF00CA90DB /* EasyDraw.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FE1B9DD71D9C3DAF00CA90DB /* EasyDrawTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE1B9DE41D9C3DAF00CA90DB /* Build configuration list for PBXNativeTarget "EasyDrawTests" */;
+			buildPhases = (
+				FE1B9DD41D9C3DAF00CA90DB /* Sources */,
+				FE1B9DD51D9C3DAF00CA90DB /* Frameworks */,
+				FE1B9DD61D9C3DAF00CA90DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE1B9DDA1D9C3DAF00CA90DB /* PBXTargetDependency */,
+			);
+			name = EasyDrawTests;
+			productName = EasyDrawTests;
+			productReference = FE1B9DD81D9C3DAF00CA90DB /* EasyDrawTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE1B9DBC1D9C3DAF00CA90DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = saifjilani;
+				TargetAttributes = {
+					FE1B9DC31D9C3DAF00CA90DB = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					FE1B9DD71D9C3DAF00CA90DB = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = FE1B9DC31D9C3DAF00CA90DB;
+					};
+				};
+			};
+			buildConfigurationList = FE1B9DBF1D9C3DAF00CA90DB /* Build configuration list for PBXProject "EasyDraw" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FE1B9DBB1D9C3DAF00CA90DB;
+			productRefGroup = FE1B9DC51D9C3DAF00CA90DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE1B9DC31D9C3DAF00CA90DB /* EasyDraw */,
+				FE1B9DD71D9C3DAF00CA90DB /* EasyDrawTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE1B9DC21D9C3DAF00CA90DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE1B9DD21D9C3DAF00CA90DB /* LaunchScreen.storyboard in Resources */,
+				FE1B9DCF1D9C3DAF00CA90DB /* Assets.xcassets in Resources */,
+				FE1B9DCD1D9C3DAF00CA90DB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE1B9DD61D9C3DAF00CA90DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE1B9DC01D9C3DAF00CA90DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE1B9DCA1D9C3DAF00CA90DB /* ViewController.swift in Sources */,
+				FE1B9DC81D9C3DAF00CA90DB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE1B9DD41D9C3DAF00CA90DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE1B9DDD1D9C3DAF00CA90DB /* EasyDrawTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE1B9DDA1D9C3DAF00CA90DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE1B9DC31D9C3DAF00CA90DB /* EasyDraw */;
+			targetProxy = FE1B9DD91D9C3DAF00CA90DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FE1B9DCB1D9C3DAF00CA90DB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE1B9DCC1D9C3DAF00CA90DB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FE1B9DD01D9C3DAF00CA90DB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE1B9DD11D9C3DAF00CA90DB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FE1B9DDF1D9C3DAF00CA90DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FE1B9DE01D9C3DAF00CA90DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FE1B9DE21D9C3DAF00CA90DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EasyDraw/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyDraw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FE1B9DE31D9C3DAF00CA90DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EasyDraw/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyDraw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FE1B9DE51D9C3DAF00CA90DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EasyDrawTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyDrawTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyDraw.app/EasyDraw";
+			};
+			name = Debug;
+		};
+		FE1B9DE61D9C3DAF00CA90DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EasyDrawTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyDrawTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyDraw.app/EasyDraw";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE1B9DBF1D9C3DAF00CA90DB /* Build configuration list for PBXProject "EasyDraw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE1B9DDF1D9C3DAF00CA90DB /* Debug */,
+				FE1B9DE01D9C3DAF00CA90DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE1B9DE11D9C3DAF00CA90DB /* Build configuration list for PBXNativeTarget "EasyDraw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE1B9DE21D9C3DAF00CA90DB /* Debug */,
+				FE1B9DE31D9C3DAF00CA90DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FE1B9DE41D9C3DAF00CA90DB /* Build configuration list for PBXNativeTarget "EasyDrawTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE1B9DE51D9C3DAF00CA90DB /* Debug */,
+				FE1B9DE61D9C3DAF00CA90DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FE1B9DBC1D9C3DAF00CA90DB /* Project object */;
+}
