@@ -13,6 +13,7 @@
 		FE1B9DCF1D9C3DAF00CA90DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */; };
 		FE1B9DD21D9C3DAF00CA90DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DD01D9C3DAF00CA90DB /* LaunchScreen.storyboard */; };
 		FE1B9DDD1D9C3DAF00CA90DB /* EasyDrawTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B9DDC1D9C3DAF00CA90DB /* EasyDrawTests.swift */; };
+		FEDE538D1DAEB5AD00F31499 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDE538C1DAEB5AD00F31499 /* SelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		FE1B9DD81D9C3DAF00CA90DB /* EasyDrawTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyDrawTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1B9DDC1D9C3DAF00CA90DB /* EasyDrawTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyDrawTests.swift; sourceTree = "<group>"; };
 		FE1B9DDE1D9C3DAF00CA90DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEDE538C1DAEB5AD00F31499 /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */,
 				FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */,
+				FEDE538C1DAEB5AD00F31499 /* SelectionViewController.swift */,
 				FE1B9DCB1D9C3DAF00CA90DB /* Main.storyboard */,
 				FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */,
 				FE1B9DD01D9C3DAF00CA90DB /* LaunchScreen.storyboard */,
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE1B9DCA1D9C3DAF00CA90DB /* ViewController.swift in Sources */,
+				FEDE538D1DAEB5AD00F31499 /* SelectionViewController.swift in Sources */,
 				FE1B9DC81D9C3DAF00CA90DB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
