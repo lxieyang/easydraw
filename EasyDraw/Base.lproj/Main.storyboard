@@ -3,25 +3,134 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Rotation View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EasyDraw" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RotationViewController" customModule="EasyDraw" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ZlJ-4C-luH">
+                                <frame key="frameInset" minX="418" minY="289" width="188" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dkn-5s-Oc6">
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Rotate"/>
+                                <connections>
+                                    <action selector="rotateSelectObject:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CMt-uI-pST"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dkn-5s-Oc6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="469" id="5k7-rf-3eQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dkn-5s-Oc6" secondAttribute="bottom" constant="219" id="9Fc-et-J7b"/>
+                            <constraint firstItem="Dkn-5s-Oc6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="259" id="fZW-jr-Cft"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dkn-5s-Oc6" secondAttribute="trailing" constant="610" id="iUc-co-1H6"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="objectSelected" destination="ZlJ-4C-luH" id="TUK-c1-Lpg"/>
+                        <outlet property="rotateButton" destination="Dkn-5s-Oc6" id="NhD-Pp-MDB"/>
+                        <segue destination="0eO-Pv-Cwe" kind="popoverPresentation" identifier="RotationOptions" popoverAnchorView="Dkn-5s-Oc6" id="0Yu-5u-aNX">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="138" y="98"/>
+        </scene>
+        <!--Edit Rotation View Controller-->
+        <scene sceneID="bim-be-Lsj">
+            <objects>
+                <viewController id="0eO-Pv-Cwe" customClass="EditRotationViewController" customModule="EasyDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YJM-Wn-WBc"/>
+                        <viewControllerLayoutGuide type="bottom" id="ESH-OH-svb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JHt-Eu-ALl">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bDj-ph-wxE">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VV9-Wr-RTa">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Degree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRi-DS-rzt">
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="0.0" maxValue="180" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSs-k9-tiF">
+                                                <connections>
+                                                    <action selector="sliderValueChange:" destination="0eO-Pv-Cwe" eventType="valueChanged" id="iN2-Cr-PCp"/>
+                                                </connections>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gya-Hc-Heq">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="DO5-4Y-eKY"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zAN-0j-bgD">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orientation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEP-6t-2ze">
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mC0-De-j5C">
+                                                <segments>
+                                                    <segment title="Clockwise"/>
+                                                    <segment title="Counter-Clockwise"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="rotationOrientationChange:" destination="0eO-Pv-Cwe" eventType="valueChanged" id="oNE-f8-FCO"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="mC0-De-j5C" firstAttribute="width" secondItem="mSs-k9-tiF" secondAttribute="width" id="Fsc-K0-H3c"/>
+                                    <constraint firstItem="TEP-6t-2ze" firstAttribute="width" secondItem="pRi-DS-rzt" secondAttribute="width" id="ae1-6v-ZJF"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="bDj-ph-wxE" secondAttribute="trailing" id="VlO-VK-bsS"/>
+                            <constraint firstItem="bDj-ph-wxE" firstAttribute="leading" secondItem="JHt-Eu-ALl" secondAttribute="leadingMargin" id="Yov-Po-cxA"/>
+                            <constraint firstItem="bDj-ph-wxE" firstAttribute="top" secondItem="YJM-Wn-WBc" secondAttribute="bottom" constant="8" symbolic="YES" id="sDm-DA-ayU"/>
+                            <constraint firstItem="ESH-OH-svb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bDj-ph-wxE" secondAttribute="bottom" constant="8" symbolic="YES" id="wbO-kp-k8p"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="rotationOrientationControl" destination="mC0-De-j5C" id="L1f-Gc-eFh"/>
+                        <outlet property="slider" destination="mSs-k9-tiF" id="9IF-cg-ris"/>
+                        <outlet property="sliderLabel" destination="gya-Hc-Heq" id="4nv-Hv-JfA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I91-yb-16l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880.078125" y="-368.75"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow" width="256" height="256"/>
+    </resources>
 </document>

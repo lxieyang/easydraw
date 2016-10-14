@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C7AF6C91DAFF00B0042BB2E /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7AF6C81DAFF00B0042BB2E /* RotationViewController.swift */; };
+		4C7AF6CB1DAFF2B30042BB2E /* RotationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7AF6CA1DAFF2B30042BB2E /* RotationOptions.swift */; };
+		4CC2778C1DB0096700B31604 /* EditRotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC2778B1DB0096700B31604 /* EditRotationViewController.swift */; };
 		FE1B9DC81D9C3DAF00CA90DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */; };
-		FE1B9DCA1D9C3DAF00CA90DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */; };
 		FE1B9DCD1D9C3DAF00CA90DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DCB1D9C3DAF00CA90DB /* Main.storyboard */; };
 		FE1B9DCF1D9C3DAF00CA90DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */; };
 		FE1B9DD21D9C3DAF00CA90DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DD01D9C3DAF00CA90DB /* LaunchScreen.storyboard */; };
@@ -26,9 +28,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C7AF6C81DAFF00B0042BB2E /* RotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RotationViewController.swift; path = ../RotationViewController.swift; sourceTree = "<group>"; };
+		4C7AF6CA1DAFF2B30042BB2E /* RotationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationOptions.swift; sourceTree = "<group>"; };
+		4CC2778B1DB0096700B31604 /* EditRotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRotationViewController.swift; sourceTree = "<group>"; };
 		FE1B9DC41D9C3DAF00CA90DB /* EasyDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FE1B9DCC1D9C3DAF00CA90DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE1B9DD11D9C3DAF00CA90DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +60,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C7AF6C51DAFEA160042BB2E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */,
+				FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */,
+				FE1B9DD01D9C3DAF00CA90DB /* LaunchScreen.storyboard */,
+				FE1B9DD31D9C3DAF00CA90DB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		FE1B9DBB1D9C3DAF00CA90DB = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +92,11 @@
 		FE1B9DC61D9C3DAF00CA90DB /* EasyDraw */ = {
 			isa = PBXGroup;
 			children = (
-				FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */,
-				FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */,
+				4C7AF6CA1DAFF2B30042BB2E /* RotationOptions.swift */,
+				4C7AF6C51DAFEA160042BB2E /* Supporting Files */,
+				4C7AF6C81DAFF00B0042BB2E /* RotationViewController.swift */,
 				FE1B9DCB1D9C3DAF00CA90DB /* Main.storyboard */,
-				FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */,
-				FE1B9DD01D9C3DAF00CA90DB /* LaunchScreen.storyboard */,
-				FE1B9DD31D9C3DAF00CA90DB /* Info.plist */,
+				4CC2778B1DB0096700B31604 /* EditRotationViewController.swift */,
 			);
 			path = EasyDraw;
 			sourceTree = "<group>";
@@ -200,8 +214,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE1B9DCA1D9C3DAF00CA90DB /* ViewController.swift in Sources */,
+				4CC2778C1DB0096700B31604 /* EditRotationViewController.swift in Sources */,
 				FE1B9DC81D9C3DAF00CA90DB /* AppDelegate.swift in Sources */,
+				4C7AF6C91DAFF00B0042BB2E /* RotationViewController.swift in Sources */,
+				4C7AF6CB1DAFF2B30042BB2E /* RotationOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
