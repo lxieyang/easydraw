@@ -11,21 +11,23 @@ import UIKit
 class EditRotationViewController: UIViewController {
     
     weak var delegate: RotationPopoverPresentationControllerDelegate?
+    
+    /* MARK: View Controller Lifecycle */
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print ("view did load for popover")
         print ("_rotationOrientation: \(_rotationOrientation)")
         print ("_rotationDegree: \(_sliderValue)")
-        // Do any additional setup after loading the view.
-        // _sliderValue = Int(self.slider.value)
         sliderValue = _sliderValue
         rotationOrientation = _rotationOrientation
+        print ("rotationOrientation: \(rotationOrientation)")
+        print ("rotationDegree: \(sliderValue)")
+
         syncRotationOrientationLabel()
         
         updateSliderUI()
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,10 +36,12 @@ class EditRotationViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)  // autolayout to fix size
+        preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)  // auto-layout to fix size
     }
     
     
+    /* MARK: Slider Methods */
+    // slider value
     var sliderValue: Int? {
         didSet {
             updateSliderUI()
@@ -53,19 +57,22 @@ class EditRotationViewController: UIViewController {
         delegate?.updateRotationDegree(_sliderValue!)
     }
 
+    
     @IBOutlet weak var slider: UISlider!
     
     @IBOutlet weak var sliderLabel: UILabel!
     
+    // slider value being changed
     @IBAction func sliderValueChange(_ sender: UISlider) {
         sliderValue = Int(sender.value)
     }
     
+    // update slider label
     private func updateSelectedValue() {
-        
         self.sliderLabel.text = String(describing: sliderValue!).appending("°")
     }
     
+    // approximate slider value
     private func approximateRotationAngle() {
         var approxAngle: Int = 0
         var minDist: Int = 180
@@ -81,6 +88,8 @@ class EditRotationViewController: UIViewController {
         print ("approx angle: \(approxAngle) , minDist: \(minDist)")
     }
     
+    
+    /* Rotation Segmented Control */
     var rotationOrientation: String!
     var _rotationOrientation: String?
     
@@ -91,12 +100,15 @@ class EditRotationViewController: UIViewController {
 
         }
     }
+    
+    // rotation orientation changes
     @IBAction func rotationOrientationChange(_ sender: UISegmentedControl) {
         rotationOrientation = updateOrientation()
         print (rotationOrientation)
 
     }
     
+    // update rotation orientation according to outlet
     private func updateOrientation() -> String! {
         var or: String!
         switch rotationOrientationControl.selectedSegmentIndex {
@@ -112,6 +124,7 @@ class EditRotationViewController: UIViewController {
         return or
     }
     
+    // sync rotation label
     private func syncRotationOrientationLabel() {
         if rotationOrientation == "clockwise" {
             rotationOrientationControl.selectedSegmentIndex = 0
@@ -119,16 +132,4 @@ class EditRotationViewController: UIViewController {
             rotationOrientationControl.selectedSegmentIndex = 1
         }
     }
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

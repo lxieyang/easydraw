@@ -19,9 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ZlJ-4C-luH">
-                                <frame key="frameInset" minX="418" minY="289" width="188" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ZlJ-4C-luH">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="188" id="ud1-j9-LaG"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dkn-5s-Oc6">
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -33,10 +34,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Dkn-5s-Oc6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="469" id="5k7-rf-3eQ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dkn-5s-Oc6" secondAttribute="bottom" constant="219" id="9Fc-et-J7b"/>
-                            <constraint firstItem="Dkn-5s-Oc6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="259" id="fZW-jr-Cft"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Dkn-5s-Oc6" secondAttribute="trailing" constant="610" id="iUc-co-1H6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dkn-5s-Oc6" secondAttribute="bottom" constant="153" id="7bT-8x-L4w"/>
+                            <constraint firstItem="ZlJ-4C-luH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SSH-4W-zV9"/>
+                            <constraint firstItem="ZlJ-4C-luH" firstAttribute="centerX" secondItem="Dkn-5s-Oc6" secondAttribute="centerX" id="UHQ-gk-bgp"/>
+                            <constraint firstItem="ZlJ-4C-luH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="300" id="mYK-TX-jxO"/>
+                            <constraint firstItem="ZlJ-4C-luH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zYj-Np-NxB"/>
                         </constraints>
                     </view>
                     <connections>
@@ -73,6 +75,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="0.0" maxValue="180" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSs-k9-tiF">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="kTU-Le-GVh"/>
+                                                </constraints>
                                                 <connections>
                                                     <action selector="sliderValueChange:" destination="0eO-Pv-Cwe" eventType="valueChanged" id="iN2-Cr-PCp"/>
                                                 </connections>
@@ -90,6 +95,9 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zAN-0j-bgD">
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orientation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEP-6t-2ze">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="whQ-nY-d7a"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

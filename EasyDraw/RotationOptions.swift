@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-/*
-enum RotationOrientation: Int {
-    case clockwise
-    case counterClockwise
-}
-*/
 
 let RotationOrientation: [String : Int] = [
     "clockwise" : 1,
@@ -41,10 +35,14 @@ let RotationDegree: [Int : CGFloat] = [
     180 : CGFloat(Float.pi / 180 * 180)
 ]
 
+
 struct Animation {
     static let RotateDuration = 0.3
 }
 
+
+// communication protocal between rotation popover presentation 
+// controller and its parent view controller
 @objc protocol RotationPopoverPresentationControllerDelegate {
     func updateRotationOrientation(_ orientation: String)
     func updateRotationDegree(_ degree: Int)
