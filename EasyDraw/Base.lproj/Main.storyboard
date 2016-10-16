@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="goA-Ya-Al9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -23,5 +23,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Draw View Controller-->
+        <scene sceneID="3GU-Ok-e5c">
+            <objects>
+                <viewController storyboardIdentifier="Draw" id="goA-Ya-Al9" customClass="DrawViewController" customModule="EasyDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hKZ-gU-Oug"/>
+                        <viewControllerLayoutGuide type="bottom" id="GR5-an-Sd8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pG2-mV-q4f">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wO5-0S-9oW">
+                                <frame key="frameInset" minX="281" minY="668" width="462" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaA-bg-TCX">
+                                        <frame key="frameInset" width="154" height="100"/>
+                                        <state key="normal" title="Button" image="square_button_100x100"/>
+                                        <connections>
+                                            <action selector="DrawButtonPressed:" destination="goA-Ya-Al9" eventType="touchUpInside" id="Bir-Gc-GRd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dk-eq-CEX">
+                                        <frame key="frameInset" minX="154" width="154" height="100"/>
+                                        <state key="normal" title="Button" image="circle_button_100x100"/>
+                                        <connections>
+                                            <action selector="DrawButtonPressed:" destination="goA-Ya-Al9" eventType="touchUpInside" id="xYd-Iu-61d"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVy-1r-GJP">
+                                        <frame key="frameInset" minX="308" width="154" height="100"/>
+                                        <state key="normal" title="Button" image="arrow_button_100x40"/>
+                                        <connections>
+                                            <action selector="DrawButtonPressed:" destination="goA-Ya-Al9" eventType="touchUpInside" id="EwC-Ov-Afq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wcf-qe-3J5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="120"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="arrow_button_100x40" width="100" height="40"/>
+        <image name="circle_button_100x100" width="100" height="100"/>
+        <image name="square_button_100x100" width="100" height="100"/>
+    </resources>
 </document>

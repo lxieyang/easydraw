@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D47F40691DB33C4A003BE8EF /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F40681DB33C4A003BE8EF /* DrawViewController.swift */; };
 		FE1B9DC81D9C3DAF00CA90DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */; };
 		FE1B9DCA1D9C3DAF00CA90DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */; };
 		FE1B9DCD1D9C3DAF00CA90DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DCB1D9C3DAF00CA90DB /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D47F40681DB33C4A003BE8EF /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		FE1B9DC41D9C3DAF00CA90DB /* EasyDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */,
 				FE1B9DC91D9C3DAF00CA90DB /* ViewController.swift */,
 				FE1B9DCB1D9C3DAF00CA90DB /* Main.storyboard */,
+				D47F40681DB33C4A003BE8EF /* DrawViewController.swift */,
 				FE1B9DCE1D9C3DAF00CA90DB /* Assets.xcassets */,
 				FE1B9DD01D9C3DAF00CA90DB /* LaunchScreen.storyboard */,
 				FE1B9DD31D9C3DAF00CA90DB /* Info.plist */,
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D47F40691DB33C4A003BE8EF /* DrawViewController.swift in Sources */,
 				FE1B9DCA1D9C3DAF00CA90DB /* ViewController.swift in Sources */,
 				FE1B9DC81D9C3DAF00CA90DB /* AppDelegate.swift in Sources */,
 			);
