@@ -137,8 +137,121 @@
             </objects>
             <point key="canvasLocation" x="880.078125" y="-368.75"/>
         </scene>
+        <!--Draw View Controller-->
+        <scene sceneID="3GU-Ok-e5c">
+            <objects>
+                <viewController storyboardIdentifier="Draw" id="goA-Ya-Al9" customClass="DrawViewController" customModule="EasyDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hKZ-gU-Oug"/>
+                        <viewControllerLayoutGuide type="bottom" id="GR5-an-Sd8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pG2-mV-q4f">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wO5-0S-9oW">
+                                <frame key="frameInset" minX="281" minY="668" width="462" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaA-bg-TCX">
+                                        <frame key="frameInset" width="154" height="100"/>
+                                        <state key="normal" title="Button" image="square_button_100x100"/>
+                                        <connections>
+                                            <action selector="DrawButtonPressed:" destination="goA-Ya-Al9" eventType="touchUpInside" id="Bir-Gc-GRd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dk-eq-CEX">
+                                        <frame key="frameInset" minX="154" width="154" height="100"/>
+                                        <state key="normal" title="Button" image="circle_button_100x100"/>
+                                        <connections>
+                                            <action selector="DrawButtonPressed:" destination="goA-Ya-Al9" eventType="touchUpInside" id="xYd-Iu-61d"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVy-1r-GJP">
+                                        <frame key="frameInset" minX="308" width="154" height="100"/>
+                                        <state key="normal" title="Button" image="arrow_button_100x40"/>
+                                        <connections>
+                                            <action selector="DrawButtonPressed:" destination="goA-Ya-Al9" eventType="touchUpInside" id="EwC-Ov-Afq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wcf-qe-3J5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="862" y="422"/>
+        </scene>
+        <!--Selection View Controller-->
+        <scene sceneID="aEJ-Dg-Kb3">
+            <objects>
+                <viewController id="ayr-DE-zgV" customClass="SelectionViewController" customModule="EasyDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hwD-gq-5rW"/>
+                        <viewControllerLayoutGuide type="bottom" id="mqO-gc-rhE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a2p-uj-pSg">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iiw-2R-pCk">
+                                <frame key="frameInset" minX="16" minY="28" width="99" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select"/>
+                                <connections>
+                                    <action selector="selectObject:" destination="ayr-DE-zgV" eventType="touchUpInside" id="fMn-xX-fLO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZT-lu-Emn">
+                                <frame key="frameInset" minX="203" minY="34" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Left"/>
+                                <connections>
+                                    <action selector="prevSelectedObject:" destination="ayr-DE-zgV" eventType="touchUpInside" id="OP3-tv-xoP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zed-Y4-6gy">
+                                <frame key="frameInset" minX="251" minY="34" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Right"/>
+                                <connections>
+                                    <action selector="nextSelectedObject:" destination="ayr-DE-zgV" eventType="touchUpInside" id="gGf-AI-fHg"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="6y8-fT-IIo">
+                                <frame key="frameInset" minY="184" width="160" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-Yz-FjR">
+                                <frame key="frameInset" minX="201" minY="208" width="137" height="152"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="WnA-AF-LCb">
+                                <frame key="frameInset" minX="67" minY="450" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="arrow" destination="WnA-AF-LCb" id="xvD-DK-W5Y"/>
+                        <outlet property="rectangle" destination="q8R-Yz-FjR" id="2pW-E0-JmK"/>
+                        <outlet property="triangle" destination="6y8-fT-IIo" id="vng-wJ-4aD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dkt-M5-fbk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="805.60000000000002" y="37.331334332833585"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow" width="256" height="256"/>
+        <image name="arrow_button_100x40" width="100" height="40"/>
+        <image name="circle_button_100x100" width="100" height="100"/>
+        <image name="rectangle" width="400" height="200"/>
+        <image name="square_button_100x100" width="100" height="100"/>
+        <image name="triangle" width="256" height="256"/>
     </resources>
 </document>
