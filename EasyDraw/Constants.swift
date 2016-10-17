@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 
 
+let SHAPES : [String] = ["square_400", "circle_400", "arrow_400"]
+
+struct objectOptions {
+    static let initialShrinkFactor: CGFloat = CGFloat(4.0)
+}
+
 let RotationOrientation: [String : Int] = [
     "clockwise" : 1,
     "counterClockwise" : -1
@@ -38,6 +44,10 @@ let RotationDegree: [Int : CGFloat] = [
 
 struct Animation {
     static let RotateDuration = 0.3
+}
+
+struct Navigation {
+    static let shiftDistance: CGFloat = CGFloat(10.0)
 }
 
 
