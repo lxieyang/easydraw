@@ -48,6 +48,8 @@ struct Animation {
 
 struct Navigation {
     static let shiftDistance: CGFloat = CGFloat(10.0)
+    static let shiftDuration = 0.3
+    static let longPressDefaultDuration = 0.2
 }
 
 
