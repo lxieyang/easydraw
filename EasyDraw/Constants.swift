@@ -41,6 +41,10 @@ let RotationDegree: [Int : CGFloat] = [
     180 : CGFloat(Float.pi / 180 * 180)
 ]
 
+struct Rotation {
+    static let defaultRotationDegree = 30
+    static let defaultRotationOrientation = "clockwise"
+}
 
 struct Animation {
     static let RotateDuration = 0.3

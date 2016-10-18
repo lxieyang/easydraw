@@ -20,9 +20,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     @IBOutlet weak var rotateButton: UIButton!
     
     // rotation management
-    var rotateDegree: CGFloat = RotationDegree[60]!
+    var rotateDegree: CGFloat = RotationDegree[Rotation.defaultRotationDegree]!
     
-    var rotateOrientation: Int = RotationOrientation["counterClockwise"]! {
+    var rotateOrientation: Int = RotationOrientation[Rotation.defaultRotationOrientation]! {
         didSet {
             updateRotateDegree()
         }
@@ -34,6 +34,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    
+    /* MARK: View Controller Lifecycle */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +43,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         for object in objects{
             self.canvas.addSubview(object)
         }
+        
+        canvas.isUserInteractionEnabled = true
         
         updateRotateDegree()
         
@@ -57,6 +61,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         self.rightButton.addGestureRecognizer(lpgr_nav_right)
 
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     
     // orientation management
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -163,6 +173,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     
     
     
+    
     @IBAction func DrawButtonPressed(_ sender: AnyObject) {
         let image : UIImage = UIImage(named:SHAPES[sender.tag])!
         let imageView : UIImageView = UIImageView(image: image)
@@ -170,10 +181,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         let imageHeight = image.size.height / objectOptions.initialShrinkFactor
         imageView.frame = CGRect(origin: CGPoint(x: canvas.bounds.midX - imageWidth / 2, y :canvas.bounds.midY - imageHeight / 2), size: CGSize(width: imageWidth, height: imageHeight))
         objects.append(imageView)
+        self.canvas.addSubview(imageView)
         
-        viewDidLoad()
+        // reset rotation parameters
+        self.rotateDegree = RotationDegree[Rotation.defaultRotationDegree]!
+        self.rotateOrientation = RotationOrientation[Rotation.defaultRotationOrientation]!
+        
+        viewWillLayoutSubviews()
     }
-
 
     @IBAction func selectObject(_ sender: AnyObject) {
         if (!objects.isEmpty) {
@@ -182,6 +197,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
             }
             selectedObjectID = 0
             highlightObject(object: objects[selectedObjectID!])
+        } else {
+            alertOpen()
         }
     }
     
@@ -191,6 +208,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
             selectedObjectID = selectedObjectID! == 0 ?
                 objects.count - 1 : selectedObjectID! - 1
             highlightObject(object: objects[selectedObjectID!])
+        } else {
+            alertOpen()
         }
     }
     
@@ -200,42 +219,35 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
             selectedObjectID = selectedObjectID! == objects.count - 1 ?
                 0 : selectedObjectID! + 1
             highlightObject(object: objects[selectedObjectID!])
+        } else {
+            alertOpen()
         }
     }
     
+    @IBAction func deselectObject(_ sender: AnyObject) {
+        if selectedObjectID != nil {
+            removeHighlight(object: objects[selectedObjectID!])
+            selectedObjectID = nil
+        } else {
+            alertOpen()
+        }
+
+    }
+    
     @IBAction func deleteSelectedObject(_ sender: AnyObject) {
+        print ("object Count: \(objects.count)")
         if selectedObjectID != nil {
             if (objects.count >= 2) {
-                // high light next
-                self.selectNextObject(rotateButton)
-                // remove the previous one
-                let prevObjectID = selectedObjectID! == 0 ? objects.count - 1 : selectedObjectID! - 1
-                removeObject(prevObjectID)
+                removeObject(selectedObjectID!)
             } else if (objects.count == 1) {
                 removeHighlight(object: objects[0])
                 removeObject(0)
-                selectedObjectID = nil
             }
             
             viewWillLayoutSubviews()
         } else {
-            let dialog = UIAlertController(
-                title: "Alert:",
-                message: "Please first select an object to delete!",
-                preferredStyle: UIAlertControllerStyle.alert)
-            present(
-                dialog,
-                animated: true,
-                completion: {
-                    dialog.view.superview?.isUserInteractionEnabled = true
-                    dialog.view.superview?.addGestureRecognizer(UITapGestureRecognizer(
-                        target: self, action: #selector(self.alertClose(_:))))
-            })
+            alertOpen()
         }
-    }
-    
-    func alertClose(_ gesture: UITapGestureRecognizer) {
-        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func up(_ sender: AnyObject) {
@@ -252,6 +264,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
                         
                 })
             }
+        } else {
+            alertOpen()
         }
     }
     
@@ -270,6 +284,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
                         
                 })
             }
+        } else {
+            alertOpen()
         }
     }
     
@@ -287,6 +303,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
                         
                 })
             }
+        } else {
+            alertOpen()
         }
     }
     
@@ -304,6 +322,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
                         
                 })
             }
+        } else {
+            alertOpen()
         }
     }
     
@@ -312,17 +332,32 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         case "Rotate":
             if selectedObjectID != nil {
                 performRotate()
+            } else {
+                alertOpen()
             }
         default:
             break
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func alertOpen() {
+        let dialog = UIAlertController(
+            title: "Please select an object first! 😜",
+            message: nil,
+            preferredStyle: UIAlertControllerStyle.alert)
+        present(
+            dialog,
+            animated: true,
+            completion: {
+                dialog.view.superview?.isUserInteractionEnabled = true
+                dialog.view.superview?.addGestureRecognizer(UITapGestureRecognizer(
+                    target: self, action: #selector(self.alertClose(_:))))
+        })
     }
     
+    func alertClose(_ gesture: UITapGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     private func removeHighlight(object: UIImageView!){
         object.layer.borderWidth = 0
@@ -337,6 +372,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     private func removeObject(_ index: Int) {
         objects[index].removeFromSuperview()
         objects.remove(at: index)
+        selectedObjectID = nil
     }
     
     private func updateRotateDegree() {

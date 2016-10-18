@@ -126,14 +126,24 @@
                                             <action selector="selectNextObject:" destination="goA-Ya-Al9" eventType="touchUpInside" id="DGi-AI-M87"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wi-9k-HAA">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="9KH-Tm-6f2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="De-select"/>
+                                        <connections>
+                                            <action selector="deselectObject:" destination="goA-Ya-Al9" eventType="touchUpInside" id="MV9-qs-DoQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="5fY-vy-9nu" firstAttribute="width" secondItem="kYH-kY-BAb" secondAttribute="width" id="Bvz-qm-d5U"/>
+                                    <constraint firstItem="3Wi-9k-HAA" firstAttribute="width" secondItem="5fY-vy-9nu" secondAttribute="width" id="hs4-UP-rmZ"/>
                                     <constraint firstItem="kYH-kY-BAb" firstAttribute="width" secondItem="UDf-Qt-GNG" secondAttribute="width" id="vUk-xr-whu"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVY-fi-MOc">
-                                <frame key="frameInset" minX="913" minY="338" width="77" height="28"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVY-fi-MOc">
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Rotate"/>
                                 <connections>
@@ -202,8 +212,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV5-NN-jSh">
-                                <frame key="frameInset" minX="56" minY="319" width="61" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV5-NN-jSh">
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Delete"/>
                                 <connections>
@@ -214,7 +223,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Mwl-hq-jNB" firstAttribute="top" secondItem="hKZ-gU-Oug" secondAttribute="bottom" constant="65" id="1Kk-kf-rdm"/>
-                            <constraint firstItem="aVY-fi-MOc" firstAttribute="top" secondItem="Mwl-hq-jNB" secondAttribute="bottom" constant="79" id="1u4-fa-dzM"/>
+                            <constraint firstItem="aVY-fi-MOc" firstAttribute="top" secondItem="Mwl-hq-jNB" secondAttribute="bottom" constant="87" id="1u4-fa-dzM"/>
                             <constraint firstItem="JZQ-3D-0IW" firstAttribute="top" secondItem="hKZ-gU-Oug" secondAttribute="bottom" constant="55" id="2oP-m1-fCp"/>
                             <constraint firstItem="wO5-0S-9oW" firstAttribute="centerX" secondItem="jyr-BS-DEj" secondAttribute="centerX" id="6Yx-5m-U85"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aVY-fi-MOc" secondAttribute="trailing" constant="14" id="6nl-aN-n29"/>
@@ -223,12 +232,12 @@
                             <constraint firstItem="GR5-an-Sd8" firstAttribute="top" secondItem="LV5-NN-jSh" secondAttribute="bottom" constant="402" id="IfT-PL-1pV"/>
                             <constraint firstItem="jyr-BS-DEj" firstAttribute="leading" secondItem="pG2-mV-q4f" secondAttribute="leadingMargin" constant="145" id="No9-Ut-rVf"/>
                             <constraint firstAttribute="bottom" secondItem="wO5-0S-9oW" secondAttribute="bottom" constant="20" symbolic="YES" id="OfJ-kb-QcP"/>
-                            <constraint firstItem="jyr-BS-DEj" firstAttribute="leading" secondItem="JZQ-3D-0IW" secondAttribute="trailing" constant="40" id="PFR-Ez-AZi"/>
-                            <constraint firstItem="LV5-NN-jSh" firstAttribute="top" secondItem="JZQ-3D-0IW" secondAttribute="bottom" constant="116" id="WIP-yl-Eck"/>
+                            <constraint firstItem="jyr-BS-DEj" firstAttribute="leading" secondItem="JZQ-3D-0IW" secondAttribute="trailing" constant="20" id="PFR-Ez-AZi"/>
+                            <constraint firstItem="LV5-NN-jSh" firstAttribute="top" secondItem="JZQ-3D-0IW" secondAttribute="bottom" constant="105" id="WIP-yl-Eck"/>
                             <constraint firstItem="wO5-0S-9oW" firstAttribute="top" secondItem="jyr-BS-DEj" secondAttribute="bottom" constant="8" symbolic="YES" id="XiU-Oy-ExX"/>
                             <constraint firstItem="Mwl-hq-jNB" firstAttribute="leading" secondItem="jyr-BS-DEj" secondAttribute="trailing" constant="62" id="bSC-6S-e0S"/>
                             <constraint firstItem="GR5-an-Sd8" firstAttribute="top" secondItem="aVY-fi-MOc" secondAttribute="bottom" constant="402" id="ecu-zK-ROL"/>
-                            <constraint firstItem="JZQ-3D-0IW" firstAttribute="leading" secondItem="pG2-mV-q4f" secondAttribute="leadingMargin" constant="28" id="jfM-JR-8vO"/>
+                            <constraint firstItem="JZQ-3D-0IW" firstAttribute="leading" secondItem="pG2-mV-q4f" secondAttribute="leadingMargin" constant="20" id="jfM-JR-8vO"/>
                             <constraint firstItem="jyr-BS-DEj" firstAttribute="leading" secondItem="LV5-NN-jSh" secondAttribute="trailing" constant="48" id="lIx-2r-OdF"/>
                             <constraint firstItem="aVY-fi-MOc" firstAttribute="leading" secondItem="jyr-BS-DEj" secondAttribute="trailing" constant="54" id="ni8-Rd-6NK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mwl-hq-jNB" secondAttribute="trailing" constant="31" id="szc-lg-oGP"/>
