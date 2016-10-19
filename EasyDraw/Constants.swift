@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-let SHAPES : [String] = ["square_400", "circle_400", "arrow_400"]
+let SHAPES : [String] = ["square_400", "circle_400", "arrow_400", "triangle_right"]
 
 struct objectOptions {
     static let initialShrinkFactor: CGFloat = CGFloat(4.0)

@@ -27,6 +27,7 @@ class EditRotationViewController: UIViewController {
         syncRotationOrientationLabel()
         
         updateSliderUI()
+        viewWillLayoutSubviews()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +56,7 @@ class EditRotationViewController: UIViewController {
         // updateSelectedValue()
         slider.setValue(Float(_sliderValue!), animated: true)
         delegate?.updateRotationDegree(_sliderValue!)
+        delegate?.updateRotationOrientation(_rotationOrientation!)
     }
 
     
@@ -104,6 +106,7 @@ class EditRotationViewController: UIViewController {
     // rotation orientation changes
     @IBAction func rotationOrientationChange(_ sender: UISegmentedControl) {
         rotationOrientation = updateOrientation()
+        _rotationOrientation = rotationOrientation
         print (rotationOrientation)
 
     }
@@ -119,7 +122,9 @@ class EditRotationViewController: UIViewController {
         default: break
         }
         
+        delegate?.updateRotationDegree(_sliderValue!)
         delegate?.updateRotationOrientation(or)
+        
         
         return or
     }

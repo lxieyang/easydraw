@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     @IBOutlet weak var rotateButton: UIButton!
     
     // rotation management
-    var rotateDegree: CGFloat = RotationDegree[Rotation.defaultRotationDegree]!
+    var rotateDegree: CGFloat = RotationDegree[Rotation.defaultRotationDegree]! 
     
     var rotateOrientation: Int = RotationOrientation[Rotation.defaultRotationOrientation]! {
         didSet {
@@ -40,7 +40,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        for object in objects{
+        for object in objects {
             self.canvas.addSubview(object)
         }
         
@@ -107,7 +107,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     
     // long press gesture recognizer
     func longPressHandlerForRotation(_ gestureRecogniser: UILongPressGestureRecognizer) {
-        performSegue(withIdentifier: "RotationOptions", sender: self)
+        if selectedObjectID != nil {
+            performSegue(withIdentifier: "RotationOptions", sender: self)
+        } else {
+            alertOpen()
+        }
+
     }
     
     func longPressHandlerForNavUp(_ gestureRecogniser: UILongPressGestureRecognizer) {
