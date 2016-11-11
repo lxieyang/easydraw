@@ -14,7 +14,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     
     @IBOutlet weak var canvas: UIView!
     var selectedObjectID: Int?
-    var objects = [UIImageView]()
+    var objects = [UIView]()
     var timer: Timer?
     
     @IBOutlet weak var rotateButton: UIButton!
@@ -35,9 +35,41 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     @IBOutlet weak var rightButton: UIButton!
     
     
+    // object button
+    @IBOutlet weak var square: UIButton!
+    @IBOutlet weak var circle: UIButton!
+    @IBOutlet weak var triangle1: UIButton!
+    @IBOutlet weak var rightTriangle1: UIButton!
+    @IBOutlet weak var rightTriangle2: UIButton!
+    @IBOutlet weak var arrow1: UIButton!
+    @IBOutlet weak var arrow2: UIButton!
+    
     /* MARK: View Controller Lifecycle */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set button image
+        var myimage = UIImage(view: RectObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.square.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: CircleObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.circle.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: EquicruralTraingleObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.triangle1.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: LeftRightTriangle(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.rightTriangle1.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: RightRightTriangle(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.rightTriangle2.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: ArrowBoldObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.arrow1.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: ArrowNarrowObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.arrow2.setImage(myimage, for: .normal)
+        
         
         // Do any additional setup after loading the view.
         for object in objects {
@@ -180,13 +212,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     
     
     @IBAction func DrawButtonPressed(_ sender: AnyObject) {
+        /*
         let image : UIImage = UIImage(named:SHAPES[sender.tag])!
         let imageView : UIImageView = UIImageView(image: image)
         let imageWidth = image.size.width / objectOptions.initialShrinkFactor
         let imageHeight = image.size.height / objectOptions.initialShrinkFactor
         imageView.frame = CGRect(origin: CGPoint(x: canvas.bounds.midX - imageWidth / 2, y :canvas.bounds.midY - imageHeight / 2), size: CGSize(width: imageWidth, height: imageHeight))
+         */
+        print ("button pressed")
+        let imageWidth = objectDrawing.initialObjectSize
+        let imageHeight = objectDrawing.initialObjectSize
+        let originX = canvas.bounds.midX - imageWidth / 2
+        let originY = canvas.bounds.midY - imageHeight / 2
+        let imageView = VehicleCarObject(frame: CGRect(origin: CGPoint(x: originX, y : originY), size: CGSize(width: imageWidth, height: imageHeight)))
         objects.append(imageView)
         self.canvas.addSubview(imageView)
+        imageView.setNeedsDisplay()
         
         // reset rotation parameters
         self.rotateDegree = RotationDegree[Rotation.defaultRotationDegree]!
@@ -364,13 +405,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         self.dismiss(animated: true, completion: nil)
     }
     
-    private func removeHighlight(object: UIImageView!){
+    private func removeHighlight(object: UIView!){
         object.layer.borderWidth = 0
         object.layer.borderColor = UIColor.white.cgColor
     }
     
-    private func highlightObject(object:UIImageView!){
-        object.layer.borderWidth = 2
+    private func highlightObject(object:UIView!){
+        object.layer.borderWidth = CGFloat(objectDrawing.heighlightWidth)
         object.layer.borderColor = UIColor.blue.cgColor
     }
     

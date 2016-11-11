@@ -10,6 +10,16 @@ import Foundation
 import UIKit
 
 
+struct objectDrawing {
+    static let heighlightWidth = 2.0
+    static let heighlightPadding = 1.0
+    static let lineWidthOnCanvas = 3.0
+    static let initialObjectSize = CGFloat(150)
+    static let buttonSize = CGFloat(50)
+}
+
+
+
 let SHAPES : [String] = ["square_400", "circle_400", "arrow_400", "triangle_right"]
 
 struct objectOptions {
