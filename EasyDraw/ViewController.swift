@@ -42,7 +42,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     @IBOutlet weak var rightTriangle1: UIButton!
     @IBOutlet weak var rightTriangle2: UIButton!
     @IBOutlet weak var arrow1: UIButton!
-    @IBOutlet weak var arrow2: UIButton!
+    @IBOutlet weak var trapezoid: UIButton!
+    @IBOutlet weak var parallelogram: UIButton!
+    @IBOutlet weak var hexagon: UIButton!
+    @IBOutlet weak var cross: UIButton!
+    @IBOutlet weak var heart: UIButton!
+    @IBOutlet weak var cloud: UIButton!
+    @IBOutlet weak var lightning: UIButton!
+    @IBOutlet weak var camera: UIButton!
+    @IBOutlet weak var phone: UIButton!
+    @IBOutlet weak var vehicle: UIButton!
+    @IBOutlet weak var plane: UIButton!
+    @IBOutlet weak var sun: UIButton!
+    
+    
     
     /* MARK: View Controller Lifecycle */
     override func viewDidLoad() {
@@ -67,8 +80,42 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         myimage = UIImage(view: ArrowBoldObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
         self.arrow1.setImage(myimage, for: .normal)
         
-        myimage = UIImage(view: ArrowNarrowObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
-        self.arrow2.setImage(myimage, for: .normal)
+        myimage = UIImage(view: TrapezoidMidObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.trapezoid.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: ParallelogramObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.parallelogram.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: HexagonObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.hexagon.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: CrossFatObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.cross.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: HeartObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.heart.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: CloudObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.cloud.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: LightningObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.lightning.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: CameraObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.camera.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: PhoneObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.phone.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: VehicleTruckObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.vehicle.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: PlaneSideObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.plane.setImage(myimage, for: .normal)
+        
+        myimage = UIImage(view: SunObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+        self.sun.setImage(myimage, for: .normal)
+
         
         
         // Do any additional setup after loading the view.
@@ -212,19 +259,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     
     
     @IBAction func DrawButtonPressed(_ sender: AnyObject) {
-        /*
-        let image : UIImage = UIImage(named:SHAPES[sender.tag])!
-        let imageView : UIImageView = UIImageView(image: image)
-        let imageWidth = image.size.width / objectOptions.initialShrinkFactor
-        let imageHeight = image.size.height / objectOptions.initialShrinkFactor
-        imageView.frame = CGRect(origin: CGPoint(x: canvas.bounds.midX - imageWidth / 2, y :canvas.bounds.midY - imageHeight / 2), size: CGSize(width: imageWidth, height: imageHeight))
-         */
-        print ("button pressed")
+        print ("Tag: \(sender.tag)")
         let imageWidth = objectDrawing.initialObjectSize
         let imageHeight = objectDrawing.initialObjectSize
         let originX = canvas.bounds.midX - imageWidth / 2
         let originY = canvas.bounds.midY - imageHeight / 2
-        let imageView = VehicleCarObject(frame: CGRect(origin: CGPoint(x: originX, y : originY), size: CGSize(width: imageWidth, height: imageHeight)))
+        let imageFrame = CGRect(origin: CGPoint(x: originX, y : originY), size: CGSize(width: imageWidth, height: imageHeight))
+        let imageView = createObjectWithTag(sender.tag, imageFrame)
+        
         objects.append(imageView)
         self.canvas.addSubview(imageView)
         imageView.setNeedsDisplay()

@@ -12,28 +12,21 @@ class HexagonObject: ObjectOnCanvas {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        let topHeightFactor = CGFloat(0.0175)
-        let upperWidthFactor = CGFloat(0.05)
-        let upperHeightFactor = CGFloat(0.26)
+        let frame = CGRect(x: 0, y: 0, width: 101, height: 90)
         
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: (rectToPutImage?.midX)!, y: (rectToPutImage?.maxY)! * topHeightFactor))
-        
-        path.addLine(to: CGPoint(x: (rectToPutImage?.maxX)! * (CGFloat(1.0) - upperWidthFactor), y: (rectToPutImage?.maxY)! * upperHeightFactor))
-        
-        path.addLine(to: CGPoint(x: (rectToPutImage?.maxX)! * (CGFloat(1.0) - upperWidthFactor), y: (rectToPutImage?.maxY)! * (CGFloat(1.0) - upperHeightFactor)))
-        
-        path.addLine(to: CGPoint(x: (rectToPutImage?.midX)!, y: (rectToPutImage?.maxY)! * (CGFloat(1.0) - topHeightFactor)))
-        
-        path.addLine(to: CGPoint(x: (rectToPutImage?.maxX)! * upperWidthFactor, y: (rectToPutImage?.maxY)! * (CGFloat(1.0) - upperHeightFactor)))
-        
-        path.addLine(to: CGPoint(x: (rectToPutImage?.maxX)! * upperWidthFactor, y: (rectToPutImage?.maxY)! * upperHeightFactor))
-    
-        path.close()
-        
-        path.lineWidth = CGFloat(lineWidth!)
-        path.stroke()
-        path.fill()
+        //// Bezier Drawing
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: frame.minX + 70.16, y: frame.minY + 8.57))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 90.4, y: frame.minY + 45))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 70.16, y: frame.minY + 81.43))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 29.84, y: frame.minY + 81.43))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 9.6, y: frame.minY + 45))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 29.84, y: frame.minY + 8.57))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 70.16, y: frame.minY + 8.57))
+        bezierPath.close()
+        bezierPath.lineWidth = CGFloat(lineWidth!)
+        bezierPath.fit(into: rectToPutImage!).moveCenter(to: rect.center).stroke()
+
     }
 
 }

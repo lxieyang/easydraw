@@ -62,10 +62,6 @@ class CameraObject: ObjectOnCanvas {
         path4146Path.addCurve(to: CGPoint(x: frame.minX + 258, y: frame.minY + 275.14), controlPoint1: CGPoint(x: frame.minX + 296.97, y: frame.minY + 276.84), controlPoint2: CGPoint(x: frame.minX + 277.7, y: frame.minY + 279.31))
         path4146Path.close()
         
-        path4146Path.lineWidth = CGFloat(lineWidth!)
-        
-        path4146Path.fit(into: rectToPutImage!).moveCenter(to: rect.center).stroke()
-        
         fillColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
         path4146Path.fit(into: rectToPutImage!).moveCenter(to: rect.center).fill()
     }

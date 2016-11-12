@@ -263,7 +263,7 @@ class VehicleCarObject: ObjectOnCanvas {
 
 
 
-class VechileTruckObject: ObjectOnCanvas {
+class VehicleTruckObject: ObjectOnCanvas {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)

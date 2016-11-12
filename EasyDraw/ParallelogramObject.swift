@@ -12,23 +12,17 @@ class ParallelogramObject: ObjectOnCanvas {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        let widthFactor = CGFloat(0.30)
-        let heightFactor = CGFloat(0.10)
+        let frame = CGRect(x: 0, y: 0, width: 792, height: 293)
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: frame.minX + 200, y: frame.minY))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 790, y: frame.minY))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 590, y: frame.minY + 290))
+        bezierPath.addLine(to: CGPoint(x: frame.minX, y: frame.minY + 290))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 200, y: frame.minY))
+        bezierPath.close()
         
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: (rectToPutImage?.minX)!, y: (rectToPutImage?.maxY)! * (CGFloat(1.0) - heightFactor)))
-        
-        path.addLine(to: CGPoint(x: (rectToPutImage?.maxX)! * widthFactor, y: (rectToPutImage?.maxY)! * heightFactor))
-        
-        path.addLine(to: CGPoint(x: (rectToPutImage?.maxX)!, y: (rectToPutImage?.maxY)! * heightFactor))
-        
-        path.addLine(to: CGPoint(x: (rectToPutImage?.maxX)! * (CGFloat(1.0) - widthFactor), y: (rectToPutImage?.maxY)! * (CGFloat(1.0) - heightFactor)))
-        
-        path.close()
-        
-        path.lineWidth = CGFloat(lineWidth!)
-        path.stroke()
-        path.fill()
+        bezierPath.lineWidth = CGFloat(lineWidth!)
+        bezierPath.fit(into: rectToPutImage!).moveCenter(to: rect.center).stroke()
     }
 
 }
