@@ -9,7 +9,10 @@
 import UIKit
 
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopoverPresentationControllerDelegate,
+class ViewController: UIViewController,
+    UIGestureRecognizerDelegate,
+    UITextFieldDelegate,
+    RotationPopoverPresentationControllerDelegate,
     PlaneOptionsPopoverresentationControllerDelegate,
     VehicleOptionsPopoverresentationControllerDelegate,
     CrossOptionsPopoverresentationControllerDelegate,
@@ -185,8 +188,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         self.rightButton.addGestureRecognizer(lpgr_nav_right)
         
         // add longpress for objects
-        
-        
         var tap_object = UITapGestureRecognizer(target: self, action: #selector(self.singleTapPlane(_:)))
         var long_press_object = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressPlane(_:)))
         self.plane.addGestureRecognizer(tap_object)
