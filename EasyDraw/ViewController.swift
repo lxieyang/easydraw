@@ -447,6 +447,7 @@ class ViewController: UIViewController,
     
     // import image from photo library
     @IBAction func importFromPhotoLibrary(_ sender: AnyObject) {
+       
         let image = UIImagePickerController()
         image.allowsEditing = true
         image.delegate = self
@@ -459,18 +460,16 @@ class ViewController: UIViewController,
         image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        print (newImage!.size.width)
         return newImage!
     }
     
     // method for when the user selected a picture using the image picker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         
         dismiss(animated: true)
         
         let originalSize = image.size
-        print ("Original image size: \(originalSize)")
         
         let imageWidth = objectDrawing.initialObjectSize
         let imageHeight = objectDrawing.initialObjectSize
@@ -493,9 +492,6 @@ class ViewController: UIViewController,
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         imageView.clipsToBounds = true
         let newImage = resizeImage(image: image, newSize: newSize)
-        print ("New image width: \(newImage.size.width)")
-
-        
         
         imageView.image = newImage
         imageView.isUserInteractionEnabled = true
@@ -521,10 +517,13 @@ class ViewController: UIViewController,
     
     func selectGestureAction(_ sender: UITapGestureRecognizer){
         
-        let object = sender.view as! MyView
-        highlightObject(object: object)
-        select(objectID: object.id)
-        
+        if let object = sender.view as? MyView {
+            highlightObject(object: object)
+            select(objectID: object.id)
+        } else if let object = sender.view as? MyImageView {
+            highlightObject(object: object)
+            select(objectID: object.id)
+        }
     }
     
     // export to photo library
