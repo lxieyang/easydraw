@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ObjectOnCanvas: UIView {
+class ObjectOnCanvas: MyView {
     
     var lineWidth: Double?
     var originX: Double?

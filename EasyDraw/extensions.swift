@@ -18,7 +18,7 @@ extension UIImage {
     }
 }
 
-func createObjectWithTag(_ tag: Int, _ subTag: Int, _ frame: CGRect) -> UIView {
+func createObjectWithTag(_ tag: Int, _ subTag: Int, _ frame: CGRect) -> MyView {
     switch tag {
     case 0:
         return RectObject(frame: frame)
@@ -87,6 +87,6 @@ func createObjectWithTag(_ tag: Int, _ subTag: Int, _ frame: CGRect) -> UIView {
     case 17:
         return SunObject(frame: frame)
     default:
-        return UIView()
+        return MyView()
     }
 }

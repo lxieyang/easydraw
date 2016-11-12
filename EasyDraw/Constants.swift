@@ -14,7 +14,7 @@ struct objectDrawing {
     static let heighlightWidth = 2.0
     static let heighlightPadding = 1.0
     static let lineWidthOnCanvas = 3.0
-    static let initialObjectSize = CGFloat(150)
+    static let initialObjectSize = CGFloat(100)
     static let buttonSize = CGFloat(55)
 }
 

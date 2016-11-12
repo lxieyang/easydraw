@@ -8,6 +8,14 @@
 
 import UIKit
 
+class MyView: UIView {
+    var id: Int = 0
+}
+
+class MyImageView: UIImageView{
+    var id: Int = 0
+}
+
 
 class ViewController: UIViewController,
     UIGestureRecognizerDelegate,
@@ -22,7 +30,11 @@ class ViewController: UIViewController,
     
     @IBOutlet weak var canvas: UIView!
     var selectedObjectID: Int?
-    var objects = [UIView]()
+    
+    var objectIDCounter = 0
+    var indexes = [Int]()
+    var currentIndex = 0
+    var objects = [Int: UIView]()
     var timer: Timer?
     
     @IBOutlet weak var rotateButton: UIButton!
@@ -168,8 +180,8 @@ class ViewController: UIViewController,
         
         
         // Do any additional setup after loading the view.
-        for object in objects {
-            self.canvas.addSubview(object)
+        for id in objects.keys {
+            self.canvas.addSubview(objects[id]!)
         }
         
         canvas.isUserInteractionEnabled = true
@@ -430,7 +442,6 @@ class ViewController: UIViewController,
     // implement ArrowOptionsPopoverresentationControllerDelegate protocal
     func updateArrowTag(_ model: Int) {
         self.arrowTag = model
-        print ("updating")
     }
 
     
@@ -478,14 +489,26 @@ class ViewController: UIViewController,
         let originX = canvas.bounds.midX - imageWidth / 2
         let originY = canvas.bounds.midY - imageHeight / 2
         let imageFrame = CGRect(origin: CGPoint(x: originX, y : originY), size: CGSize(width: imageWidth, height: imageHeight))
-        let imageView = UIImageView(frame: imageFrame)
+        let imageView = MyImageView(frame: imageFrame)
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         imageView.clipsToBounds = true
         let newImage = resizeImage(image: image, newSize: newSize)
         print ("New image width: \(newImage.size.width)")
+
+        
+        
         imageView.image = newImage
-        objects.append(imageView)
+        imageView.isUserInteractionEnabled = true
+        imageView.id = objectIDCounter
+        
+        let selectGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selectGestureAction(_:)))
+        imageView.addGestureRecognizer(selectGestureRecognizer)
+        
+        
+        objects[objectIDCounter] = imageView
         self.canvas.addSubview(imageView)
+         indexes.append(objectIDCounter)
+        objectIDCounter += 1
         // the image imported will be at the bottom
         self.canvas.sendSubview(toBack: imageView)
         
@@ -494,6 +517,14 @@ class ViewController: UIViewController,
         self.rotateOrientation = RotationOrientation[Rotation.defaultRotationOrientation]!
         
         viewWillLayoutSubviews()
+    }
+    
+    func selectGestureAction(_ sender: UITapGestureRecognizer){
+        
+        let object = sender.view as! MyView
+        highlightObject(object: object)
+        select(objectID: object.id)
+        
     }
     
     // export to photo library
@@ -561,7 +592,18 @@ class ViewController: UIViewController,
         
         let imageView = createObjectWithTag(sender.tag, subTag, imageFrame)
         
-        objects.append(imageView)
+        imageView.isUserInteractionEnabled = true
+        imageView.id = objectIDCounter
+        
+        let selectGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selectGestureAction(_:)))
+        imageView.addGestureRecognizer(selectGestureRecognizer)
+        
+        objects[objectIDCounter] = imageView
+        // the image imported will be at the bottom
+        self.canvas.sendSubview(toBack: imageView)
+        indexes.append(objectIDCounter)
+        objectIDCounter += 1
+
         self.canvas.addSubview(imageView)
         imageView.setNeedsDisplay()
         
@@ -571,24 +613,37 @@ class ViewController: UIViewController,
         
         viewWillLayoutSubviews()
     }
-
-    @IBAction func selectObject(_ sender: AnyObject) {
+    
+    func select(objectID: Int?){
         if (!objects.isEmpty) {
-            if selectedObjectID != nil {
+            if (selectedObjectID != nil){
                 removeHighlight(object: objects[selectedObjectID!])
             }
-            selectedObjectID = 0
+            
+            selectedObjectID = objectID
             highlightObject(object: objects[selectedObjectID!])
+            
         } else {
             alertOpen()
         }
+    }
+
+    @IBAction func selectObject(_ sender: AnyObject) {
+        let objectID = objects.keys.first
+        select(objectID: objectID)
     }
     
     @IBAction func selectPrevObject(_ sender: AnyObject) {
         if selectedObjectID != nil {
             removeHighlight(object: objects[selectedObjectID!])
-            selectedObjectID = selectedObjectID! == 0 ?
-                objects.count - 1 : selectedObjectID! - 1
+            
+            if (currentIndex == 0){
+                currentIndex = indexes.count - 1
+            } else {
+                currentIndex = currentIndex - 1
+            }
+            
+            selectedObjectID = indexes[currentIndex]
             highlightObject(object: objects[selectedObjectID!])
         } else {
             alertOpen()
@@ -597,9 +652,16 @@ class ViewController: UIViewController,
     
     @IBAction func selectNextObject(_ sender: AnyObject) {
         if selectedObjectID != nil {
+            
             removeHighlight(object: objects[selectedObjectID!])
-            selectedObjectID = selectedObjectID! == objects.count - 1 ?
-                0 : selectedObjectID! + 1
+            
+            if (currentIndex == indexes.count - 1){
+                currentIndex = 0
+            } else {
+                currentIndex = currentIndex + 1
+            }
+            
+            selectedObjectID = indexes[currentIndex]
             highlightObject(object: objects[selectedObjectID!])
         } else {
             alertOpen()
@@ -616,14 +678,15 @@ class ViewController: UIViewController,
 
     }
     
-    @IBAction func deleteSelectedObject(_ sender: AnyObject) {
-        print ("object Count: \(objects.count)")
+    func deleteObject(){
         if selectedObjectID != nil {
             if (objects.count >= 2) {
                 removeObject(selectedObjectID!)
+                
             } else if (objects.count == 1) {
-                removeHighlight(object: objects[0])
-                removeObject(0)
+                removeHighlight(object: objects[objects.keys.first!])
+                removeObject(objects.keys.first!)
+                
             }
             
             viewWillLayoutSubviews()
@@ -632,9 +695,23 @@ class ViewController: UIViewController,
         }
     }
     
+    @IBAction func deleteSelectedObject(_ sender: AnyObject) {
+        deleteObject()
+    }
+    
+    @IBAction func clearAll(_ sender: Any) {
+        
+        for id in objects.keys{
+            objects[id]!.removeFromSuperview()
+        }
+        
+        objects.removeAll()
+        indexes.removeAll()
+        selectedObjectID = nil
+    }
     @IBAction func up(_ sender: AnyObject) {
         if let selected = selectedObjectID {
-            let currentObject = objects[selected]
+            let currentObject = objects[selected]!
             if (currentObject.frame.minY > canvas.bounds.minY) {
                 // currentObject.center = CGPoint(x: currentObject.center.x, y: currentObject.center.y - Navigation.shiftDistance);
                 UIView.animate(
@@ -654,7 +731,7 @@ class ViewController: UIViewController,
     
     @IBAction func down(_ sender: AnyObject) {
         if let selected = selectedObjectID {
-            let currentObject = objects[selected]
+            let currentObject = objects[selected]!
             if (currentObject.frame.maxY + Navigation.shiftDistance < canvas.bounds.maxY) {
                 // currentObject.center = CGPoint(x: currentObject.center.x, y: currentObject.center.y + Navigation.shiftDistance);
                 UIView.animate(
@@ -673,7 +750,7 @@ class ViewController: UIViewController,
     
     @IBAction func left(_ sender: AnyObject) {
         if let selected = selectedObjectID {
-            let currentObject = objects[selected]
+            let currentObject = objects[selected]!
             if (currentObject.frame.minX > canvas.bounds.minX) {
                 // currentObject.center = CGPoint(x: currentObject.center.x - Navigation.shiftDistance, y: currentObject.center.y);
                 UIView.animate(
@@ -692,7 +769,7 @@ class ViewController: UIViewController,
     
     @IBAction func right(_ sender: AnyObject) {
         if let selected = selectedObjectID {
-            let currentObject = objects[selected]
+            let currentObject = objects[selected]!
             if (currentObject.frame.maxX + Navigation.shiftDistance < canvas.bounds.maxX) {
                 // currentObject.center = CGPoint(x: currentObject.center.x + Navigation.shiftDistance, y: currentObject.center.y);
                 UIView.animate(
@@ -752,8 +829,10 @@ class ViewController: UIViewController,
     }
     
     private func removeObject(_ index: Int) {
-        objects[index].removeFromSuperview()
-        objects.remove(at: index)
+        let idx = indexes.index(of: index)!
+        indexes.remove(at: idx)
+        objects[index]!.removeFromSuperview()
+        objects.removeValue(forKey: index)
         selectedObjectID = nil
     }
     
@@ -764,7 +843,7 @@ class ViewController: UIViewController,
     // perform rotation with annimation
     private func performRotate() {
         print ("performing rotation: Rotation orientation: \(rotateOrientation) | Rotation degree: \(rotateDegree)")
-        let currentObject = objects[selectedObjectID!]
+        let currentObject = objects[selectedObjectID!]!
         UIView.animate(
             withDuration: Animation.RotateDuration,
             animations: {
