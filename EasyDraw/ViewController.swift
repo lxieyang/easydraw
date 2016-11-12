@@ -11,7 +11,8 @@ import UIKit
 
 class ViewController: UIViewController,
     UIGestureRecognizerDelegate,
-    UITextFieldDelegate,
+    UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate,
     RotationPopoverPresentationControllerDelegate,
     PlaneOptionsPopoverresentationControllerDelegate,
     VehicleOptionsPopoverresentationControllerDelegate,
@@ -432,6 +433,103 @@ class ViewController: UIViewController,
         print ("updating")
     }
 
+    
+    // import image from photo library
+    @IBAction func importFromPhotoLibrary(_ sender: AnyObject) {
+        let image = UIImagePickerController()
+        image.allowsEditing = true
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        present(image, animated: true)
+    }
+    
+    func resizeImage(image: UIImage, newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        print (newImage!.size.width)
+        return newImage!
+    }
+    
+    // method for when the user selected a picture using the image picker
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+        
+        dismiss(animated: true)
+        
+        let originalSize = image.size
+        print ("Original image size: \(originalSize)")
+        
+        let imageWidth = objectDrawing.initialObjectSize
+        let imageHeight = objectDrawing.initialObjectSize
+        
+        let widthRatio = imageWidth / originalSize.width
+        let heightRatio = imageHeight / originalSize.height
+        
+        var newSize : CGSize
+        
+        if widthRatio > heightRatio {
+            newSize = CGSize(width: originalSize.width * heightRatio, height: originalSize.height * heightRatio)
+        } else {
+            newSize = CGSize(width: originalSize.width * widthRatio, height: originalSize.height * widthRatio)
+        }
+        
+        let originX = canvas.bounds.midX - imageWidth / 2
+        let originY = canvas.bounds.midY - imageHeight / 2
+        let imageFrame = CGRect(origin: CGPoint(x: originX, y : originY), size: CGSize(width: imageWidth, height: imageHeight))
+        let imageView = UIImageView(frame: imageFrame)
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        imageView.clipsToBounds = true
+        let newImage = resizeImage(image: image, newSize: newSize)
+        print ("New image width: \(newImage.size.width)")
+        imageView.image = newImage
+        objects.append(imageView)
+        self.canvas.addSubview(imageView)
+        // the image imported will be at the bottom
+        self.canvas.sendSubview(toBack: imageView)
+        
+        // reset rotation parameters
+        self.rotateDegree = RotationDegree[Rotation.defaultRotationDegree]!
+        self.rotateOrientation = RotationOrientation[Rotation.defaultRotationOrientation]!
+        
+        viewWillLayoutSubviews()
+    }
+    
+    // export to photo library
+    @IBAction func exportToPhotoLibrary(_ sender: AnyObject) {
+        // first need to deselect if any object gets selected
+        if selectedObjectID != nil {
+            removeHighlight(object: objects[selectedObjectID!])
+        }
+        
+        // convert UIView to a UIImage
+        UIGraphicsBeginImageContextWithOptions(canvas.bounds.size, true, 0)
+        canvas.drawHierarchy(in: canvas.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        UIImageWriteToSavedPhotosAlbum(image!, self, #selector(exportStatus(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        // reselect the object
+        if selectedObjectID != nil {
+            highlightObject(object: objects[selectedObjectID!])
+        }
+    }
+    
+    // tells the user if the diagram has been exported successfully
+    func exportStatus(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your free body diagram has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
     
     
     

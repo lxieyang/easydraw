@@ -387,6 +387,22 @@
                                     <constraint firstItem="Fa4-Ee-xkg" firstAttribute="height" secondItem="QLL-8K-8vH" secondAttribute="height" id="zzS-Zd-fIq"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcI-PL-FRa">
+                                <rect key="frame" x="40" y="515" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Import"/>
+                                <connections>
+                                    <action selector="importFromPhotoLibrary:" destination="goA-Ya-Al9" eventType="touchUpInside" id="XXr-Qx-4fx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xF-2X-IrP">
+                                <rect key="frame" x="40" y="569" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Export"/>
+                                <connections>
+                                    <action selector="exportToPhotoLibrary:" destination="goA-Ya-Al9" eventType="touchUpInside" id="oCH-hU-a0v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
