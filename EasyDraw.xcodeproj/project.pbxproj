@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C6942711DD6CE1900541B5F /* VehicleObjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6942701DD6CE1900541B5F /* VehicleObjectDetailViewController.swift */; };
 		4C7AF6CB1DAFF2B30042BB2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7AF6CA1DAFF2B30042BB2E /* Constants.swift */; };
 		4C9C54881DD4161200768F00 /* CircleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C54871DD4161200768F00 /* CircleObject.swift */; };
 		4C9C548A1DD4285400768F00 /* ObjectOnCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C54891DD4285400768F00 /* ObjectOnCanvas.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C6942701DD6CE1900541B5F /* VehicleObjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleObjectDetailViewController.swift; sourceTree = "<group>"; };
 		4C7AF6CA1DAFF2B30042BB2E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4C9C54871DD4161200768F00 /* CircleObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleObject.swift; sourceTree = "<group>"; };
 		4C9C54891DD4285400768F00 /* ObjectOnCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectOnCanvas.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				D47F40681DB33C4A003BE8EF /* ViewController.swift */,
 				4CC2778B1DB0096700B31604 /* EditRotationViewController.swift */,
 				4CE5CC461DD69CDC00299619 /* PlaneObjectDetailViewController.swift */,
+				4C6942701DD6CE1900541B5F /* VehicleObjectDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 			files = (
 				4C9C54881DD4161200768F00 /* CircleObject.swift in Sources */,
 				4CE5CC3D1DD55F4D00299619 /* Smileobject.swift in Sources */,
+				4C6942711DD6CE1900541B5F /* VehicleObjectDetailViewController.swift in Sources */,
 				4CC2778C1DB0096700B31604 /* EditRotationViewController.swift in Sources */,
 				D47F40691DB33C4A003BE8EF /* ViewController.swift in Sources */,
 				4CE5CC351DD55B2300299619 /* CameraObject.swift in Sources */,

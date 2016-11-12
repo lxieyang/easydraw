@@ -10,7 +10,8 @@ import UIKit
 
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopoverPresentationControllerDelegate,
-    PlaneOptionsPopoverresentationControllerDelegate
+    PlaneOptionsPopoverresentationControllerDelegate,
+    VehicleOptionsPopoverresentationControllerDelegate
     {
     
     @IBOutlet weak var canvas: UIView!
@@ -69,6 +70,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         }
     }
     
+    /* vehicle selector */
+    var vehicleTag: Int? {
+        didSet {
+            let imageFrame = CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)
+            let myimage = UIImage(view: createObjectWithTag(15, vehicleTag!, imageFrame))
+            self.vehicle.setImage(myimage, for: .normal)
+            
+            viewWillLayoutSubviews()
+        }
+    }
+    
     
     
     /* MARK: View Controller Lifecycle */
@@ -121,12 +133,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         myimage = UIImage(view: PhoneObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
         self.phone.setImage(myimage, for: .normal)
         
-        myimage = UIImage(view: VehicleTruckObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
-        self.vehicle.setImage(myimage, for: .normal)
-        
-//        myimage = UIImage(view: PlaneSideObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
-//        self.plane.setImage(myimage, for: .normal)
-        
+        vehicleTag = 0
         planeTag = 0
         
         myimage = UIImage(view: SunObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
@@ -158,10 +165,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         // add longpress for objects
         
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.singleTapPlane(_:)))
-        let long_press_plane = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressPlane(_:)))
-        self.plane.addGestureRecognizer(tap)
-        self.plane.addGestureRecognizer(long_press_plane)
+        var tap_object = UITapGestureRecognizer(target: self, action: #selector(self.singleTapPlane(_:)))
+        var long_press_object = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressPlane(_:)))
+        self.plane.addGestureRecognizer(tap_object)
+        self.plane.addGestureRecognizer(long_press_object)
+        
+        tap_object = UITapGestureRecognizer(target: self, action: #selector(self.singleTapVehicle(_:)))
+        long_press_object = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressVehicle(_:)))
+        self.vehicle.addGestureRecognizer(tap_object)
+        self.vehicle.addGestureRecognizer(long_press_object)
 
     }
     
@@ -217,7 +229,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
                     )
                 }
             }
+        } else if segue.identifier == "vehicleOptions" {
+            if let vc = destination as? VehicleObjectDetailViewController {
+                vc.delegate = self
+                if let ppc = vc.popoverPresentationController {
+                    ppc.sourceRect = CGRect(
+                        x: vehicle.frame.size.width,
+                        y: vehicle.frame.size.height,
+                        width: 0,
+                        height: 0
+                    )
+                }
+            }
         }
+
     }
     
     // gesture recognizer for plane
@@ -227,6 +252,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     
     func longPressPlane(_ gestureRecogniser: UILongPressGestureRecognizer) {
         performSegue(withIdentifier: "planeOptions", sender: self)
+    }
+    
+    // gesture recognizer for vehicle
+    func singleTapVehicle(_ gestureRecogniser: UITapGestureRecognizer) {
+        DrawButtonPressed(vehicle)
+    }
+    
+    func longPressVehicle(_ gestureRecogniser: UILongPressGestureRecognizer) {
+        performSegue(withIdentifier: "vehicleOptions", sender: self)
     }
     
     
@@ -305,6 +339,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         self.planeTag = model
     }
     
+    func updateVehicleTag(_ model: Int) {
+        self.vehicleTag = model
+    }
     
     
     
@@ -318,6 +355,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         
         var subTag = 0
         switch sender.tag {
+        case 15:
+            subTag = vehicleTag!
+            break
         case 16:
             subTag = planeTag!
             break

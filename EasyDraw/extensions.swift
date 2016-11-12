@@ -51,7 +51,14 @@ func createObjectWithTag(_ tag: Int, _ subTag: Int, _ frame: CGRect) -> UIView {
     case 14:
         return PhoneObject(frame: frame)
     case 15:
-        return VehicleTruckObject(frame: frame)
+        switch subTag {
+        case 0:
+            return VehicleTruckObject(frame: frame)
+        case 1:
+            return VehicleCarObject(frame: frame)
+        default:
+            return VehicleTruckObject(frame: frame)
+        }
     case 16:
         switch subTag {
         case 0:

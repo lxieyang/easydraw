@@ -77,3 +77,7 @@ struct Navigation {
 @objc protocol PlaneOptionsPopoverresentationControllerDelegate {
     func updatePlaneModel(_ model: Int)
 }
+
+@objc protocol VehicleOptionsPopoverresentationControllerDelegate {
+    func updateVehicleTag(_ model: Int)
+}

@@ -346,9 +346,12 @@
                                     </button>
                                     <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nki-lT-6WM">
                                         <rect key="frame" x="530" y="0.0" width="58.5" height="60"/>
+                                        <color key="backgroundColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="triangle"/>
                                         <connections>
-                                            <action selector="DrawButtonPressed:" destination="goA-Ya-Al9" eventType="touchUpInside" id="yYJ-hy-lVc"/>
+                                            <segue destination="dCN-V4-I0C" kind="popoverPresentation" identifier="vehicleOptions" popoverAnchorView="Nki-lT-6WM" id="S5z-Et-AYH">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lu-1a-vwx">
@@ -500,7 +503,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIg-vF-5gj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1684" y="230"/>
+            <point key="canvasLocation" x="1576" y="-1112"/>
+        </scene>
+        <!--Vehicle Object Detail View Controller-->
+        <scene sceneID="JkZ-a9-vXx">
+            <objects>
+                <viewController id="dCN-V4-I0C" customClass="VehicleObjectDetailViewController" customModule="EasyDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="if8-aH-UXf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bzv-0S-B98"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a7x-pN-zda">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjH-Ta-QgO">
+                                <rect key="frame" x="20" y="28" width="984" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpp-Dm-EAQ" userLabel="Truck">
+                                        <rect key="frame" x="0.0" y="0.0" width="492" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="g3a-5Q-S0q"/>
+                                            <constraint firstAttribute="width" constant="90" id="n4w-R2-FpU"/>
+                                        </constraints>
+                                        <state key="normal" image="arrow"/>
+                                        <connections>
+                                            <action selector="objectButtonPressed:" destination="dCN-V4-I0C" eventType="touchUpInside" id="bWF-PU-Mc6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0F-Kz-Yz5">
+                                        <rect key="frame" x="492" y="0.0" width="492" height="90"/>
+                                        <state key="normal" image="arrow"/>
+                                        <connections>
+                                            <action selector="objectButtonPressed:" destination="dCN-V4-I0C" eventType="touchUpInside" id="i9Z-H1-h4U"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="c0F-Kz-Yz5" firstAttribute="width" secondItem="Rpp-Dm-EAQ" secondAttribute="width" id="PwD-Rx-4z1"/>
+                                    <constraint firstItem="c0F-Kz-Yz5" firstAttribute="height" secondItem="Rpp-Dm-EAQ" secondAttribute="height" id="hwn-g3-3HA"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kjH-Ta-QgO" firstAttribute="top" secondItem="if8-aH-UXf" secondAttribute="bottom" constant="8" id="Uvo-Fb-4xf"/>
+                            <constraint firstItem="Bzv-0S-B98" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kjH-Ta-QgO" secondAttribute="bottom" constant="8" symbolic="YES" id="ZHa-HY-KLZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kjH-Ta-QgO" secondAttribute="trailing" id="c5K-1X-Rxt"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="kjH-Ta-QgO" secondAttribute="leading" id="lTx-BY-ARX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="car" destination="c0F-Kz-Yz5" id="HR1-SA-GlY"/>
+                        <outlet property="truck" destination="Rpp-Dm-EAQ" id="t44-5O-7et"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nch-VD-DQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1576" y="-434"/>
         </scene>
     </scenes>
     <resources>
