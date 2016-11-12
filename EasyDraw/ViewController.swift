@@ -9,7 +9,8 @@
 import UIKit
 
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopoverPresentationControllerDelegate
+class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopoverPresentationControllerDelegate,
+    PlaneOptionsPopoverresentationControllerDelegate
     {
     
     @IBOutlet weak var canvas: UIView!
@@ -54,6 +55,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     @IBOutlet weak var vehicle: UIButton!
     @IBOutlet weak var plane: UIButton!
     @IBOutlet weak var sun: UIButton!
+    
+    
+    
+    /* plane selector */
+    var planeTag: Int? {
+        didSet {
+            let imageFrame = CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)
+            let myimage = UIImage(view: createObjectWithTag(16, planeTag!, imageFrame))
+            self.plane.setImage(myimage, for: .normal)
+            
+            viewWillLayoutSubviews()
+        }
+    }
     
     
     
@@ -110,8 +124,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         myimage = UIImage(view: VehicleTruckObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
         self.vehicle.setImage(myimage, for: .normal)
         
-        myimage = UIImage(view: PlaneSideObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
-        self.plane.setImage(myimage, for: .normal)
+//        myimage = UIImage(view: PlaneSideObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
+//        self.plane.setImage(myimage, for: .normal)
+        
+        planeTag = 0
         
         myimage = UIImage(view: SunObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
         self.sun.setImage(myimage, for: .normal)
@@ -138,6 +154,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         self.leftButton.addGestureRecognizer(lpgr_nav_left)
         let lpgr_nav_right = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressHandlerForNavRight(_:)))
         self.rightButton.addGestureRecognizer(lpgr_nav_right)
+        
+        // add longpress for objects
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.singleTapPlane(_:)))
+        let long_press_plane = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressPlane(_:)))
+        self.plane.addGestureRecognizer(tap)
+        self.plane.addGestureRecognizer(long_press_plane)
 
     }
     
@@ -181,8 +205,30 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
                     )
                 }
             }
+        } else if segue.identifier == "planeOptions" {
+            if let vc = destination as? PlaneObjectDetailViewController {
+                vc.delegate = self
+                if let ppc = vc.popoverPresentationController {
+                    ppc.sourceRect = CGRect(
+                        x: plane.frame.size.width,
+                        y: plane.frame.size.height,
+                        width: 0,
+                        height: 0
+                    )
+                }
+            }
         }
     }
+    
+    // gesture recognizer for plane
+    func singleTapPlane(_ gestureRecogniser: UITapGestureRecognizer) {
+        DrawButtonPressed(plane)
+    }
+    
+    func longPressPlane(_ gestureRecogniser: UILongPressGestureRecognizer) {
+        performSegue(withIdentifier: "planeOptions", sender: self)
+    }
+    
     
     // long press gesture recognizer
     func longPressHandlerForRotation(_ gestureRecogniser: UILongPressGestureRecognizer) {
@@ -191,7 +237,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         } else {
             alertOpen()
         }
-
     }
     
     func longPressHandlerForNavUp(_ gestureRecogniser: UILongPressGestureRecognizer) {
@@ -255,6 +300,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         self.rotateDegree = CGFloat(RotationDegree[degree]!)
     }
     
+    // implement PlaneOptions PlaneOptionsPopoverresentationControllerDelegate protocal
+    func updatePlaneModel(_ model: Int) {
+        self.planeTag = model
+    }
+    
     
     
     
@@ -265,7 +315,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         let originX = canvas.bounds.midX - imageWidth / 2
         let originY = canvas.bounds.midY - imageHeight / 2
         let imageFrame = CGRect(origin: CGPoint(x: originX, y : originY), size: CGSize(width: imageWidth, height: imageHeight))
-        let imageView = createObjectWithTag(sender.tag, imageFrame)
+        
+        var subTag = 0
+        switch sender.tag {
+        case 16:
+            subTag = planeTag!
+            break
+        default:
+            break
+        }
+        
+        let imageView = createObjectWithTag(sender.tag, subTag, imageFrame)
         
         objects.append(imageView)
         self.canvas.addSubview(imageView)

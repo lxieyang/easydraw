@@ -73,3 +73,7 @@ struct Navigation {
     func updateRotationOrientation(_ orientation: String)
     func updateRotationDegree(_ degree: Int)
 }
+
+@objc protocol PlaneOptionsPopoverresentationControllerDelegate {
+    func updatePlaneModel(_ model: Int)
+}

@@ -18,7 +18,7 @@ extension UIImage {
     }
 }
 
-func createObjectWithTag(_ tag: Int, _ frame: CGRect) -> UIView {
+func createObjectWithTag(_ tag: Int, _ subTag: Int, _ frame: CGRect) -> UIView {
     switch tag {
     case 0:
         return RectObject(frame: frame)
@@ -53,7 +53,16 @@ func createObjectWithTag(_ tag: Int, _ frame: CGRect) -> UIView {
     case 15:
         return VehicleTruckObject(frame: frame)
     case 16:
-        return PlaneSideObject(frame: frame)
+        switch subTag {
+        case 0:
+            return PlaneSideObject(frame: frame)
+        case 1:
+            return PlaneOverObject(frame: frame)
+        case 2:
+            return PlaneSeaObject(frame: frame)
+        default:
+            return PlaneSideObject(frame: frame)
+        }
     case 17:
         return SunObject(frame: frame)
     default:
