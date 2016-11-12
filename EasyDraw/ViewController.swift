@@ -786,15 +786,10 @@ class ViewController: UIViewController,
     }
     
     @IBAction func rotateSelectedObject(_ sender: UIButton) {
-        switch sender.titleLabel!.text! {
-        case "Rotate":
-            if selectedObjectID != nil {
-                performRotate()
-            } else {
-                alertOpen()
-            }
-        default:
-            break
+        if selectedObjectID != nil {
+            performRotate()
+        } else {
+            alertOpen()
         }
     }
     
@@ -817,6 +812,46 @@ class ViewController: UIViewController,
         self.dismiss(animated: true, completion: nil)
     }
     
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if let selected = selectedObjectID {
+//            var location = CGPoint(x: 0, y: 0)
+//            let touch = touches.first
+//            location = (touch?.location(in: self.view))!
+//            location.x = location.x - 170
+//            location.y = location.y - 30
+//            
+//            if (location.x < canvas.bounds.minX) { location.x = canvas.bounds.minX + 32 }
+//            if (location.x > canvas.bounds.maxX) { location.x = canvas.bounds.maxX - 32 }
+//            if (location.y < canvas.bounds.minY) { location.y = canvas.bounds.minY + 32 }
+//            if (location.y > canvas.bounds.maxY) { location.y = canvas.bounds.maxY - 32 }
+//            
+//            objects[selected]!.center = location
+//            
+//        }
+//        
+//    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let selected = selectedObjectID {
+            var location = CGPoint(x: 0, y: 0)
+            let touch = touches.first
+            
+            location = (touch?.location(in: self.view))!
+            location.x = location.x - 170
+            location.y = location.y - 30
+            
+            if (location.x < canvas.bounds.minX) { location.x = canvas.bounds.minX + 39 }
+            if (location.x > canvas.bounds.maxX) { location.x = canvas.bounds.maxX - 39 }
+            if (location.y < canvas.bounds.minY) { location.y = canvas.bounds.minY + 39 }
+            if (location.y > canvas.bounds.maxY) { location.y = canvas.bounds.maxY - 39 }
+            
+            objects[selected]!.center = location
+            
+        }
+    }
+    
+    
+    //MARK: Private
     private func removeHighlight(object: UIView!){
         object.layer.borderWidth = 0
         object.layer.borderColor = UIColor.white.cgColor
