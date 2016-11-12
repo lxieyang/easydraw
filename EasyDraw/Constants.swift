@@ -81,3 +81,11 @@ struct Navigation {
 @objc protocol VehicleOptionsPopoverresentationControllerDelegate {
     func updateVehicleTag(_ model: Int)
 }
+
+@objc protocol CrossOptionsPopoverresentationControllerDelegate {
+    func updateCrossTag(_ model: Int)
+}
+
+@objc protocol ArrowOptionsPopoverresentationControllerDelegate {
+    func updateArrowTag(_ model: Int)
+}

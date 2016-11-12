@@ -263,9 +263,12 @@
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVy-1r-GJP">
                                         <rect key="frame" x="441.5" y="0.0" width="58.5" height="60"/>
+                                        <color key="backgroundColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="arrow_button_100x40"/>
                                         <connections>
-                                            <action selector="DrawButtonPressed:" destination="goA-Ya-Al9" eventType="touchUpInside" id="EwC-Ov-Afq"/>
+                                            <segue destination="I6e-wH-yvj" kind="popoverPresentation" identifier="arrowOptions" popoverAnchorView="YVy-1r-GJP" id="c88-pe-Yfd">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4v-NB-W1q">
@@ -304,9 +307,12 @@
                                 <subviews>
                                     <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvq-ia-dRr">
                                         <rect key="frame" x="0.0" y="0.0" width="58.5" height="60"/>
+                                        <color key="backgroundColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="square_400"/>
                                         <connections>
-                                            <action selector="DrawButtonPressed:" destination="goA-Ya-Al9" eventType="touchUpInside" id="9wU-Dv-Vc5"/>
+                                            <segue destination="SmT-U2-8f4" kind="popoverPresentation" identifier="crossOptions" popoverAnchorView="lvq-ia-dRr" id="oKg-sR-9bM">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obl-Yr-bni">
@@ -561,7 +567,123 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nch-VD-DQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1576" y="-434"/>
+            <point key="canvasLocation" x="1576" y="-450"/>
+        </scene>
+        <!--Cross Object Detail View Controller-->
+        <scene sceneID="jIX-OT-oFM">
+            <objects>
+                <viewController id="SmT-U2-8f4" customClass="CrossObjectDetailViewController" customModule="EasyDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2ah-Za-SIS"/>
+                        <viewControllerLayoutGuide type="bottom" id="WbQ-Sc-XSg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="62M-EP-ogj">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVL-yd-gSy">
+                                <rect key="frame" x="20" y="20" width="984" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8Q-TY-zcv" userLabel="Fat">
+                                        <rect key="frame" x="0.0" y="0.0" width="492" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="3ou-wR-5cW"/>
+                                            <constraint firstAttribute="height" constant="90" id="NgS-Ca-F7C"/>
+                                        </constraints>
+                                        <state key="normal" image="arrow"/>
+                                        <connections>
+                                            <action selector="objectButtonPressed:" destination="SmT-U2-8f4" eventType="touchUpInside" id="1EF-Ob-978"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eil-WH-5eM" userLabel="Thin">
+                                        <rect key="frame" x="492" y="0.0" width="492" height="90"/>
+                                        <state key="normal" image="arrow"/>
+                                        <connections>
+                                            <action selector="objectButtonPressed:" destination="SmT-U2-8f4" eventType="touchUpInside" id="qmz-rg-ofA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Eil-WH-5eM" firstAttribute="height" secondItem="t8Q-TY-zcv" secondAttribute="height" id="jy9-bg-591"/>
+                                    <constraint firstItem="Eil-WH-5eM" firstAttribute="width" secondItem="t8Q-TY-zcv" secondAttribute="width" id="uAm-ol-zXa"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="EVL-yd-gSy" secondAttribute="trailing" id="OE4-fy-Wtf"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="EVL-yd-gSy" secondAttribute="leading" id="Tdu-nd-74Q"/>
+                            <constraint firstItem="WbQ-Sc-XSg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EVL-yd-gSy" secondAttribute="bottom" constant="8" symbolic="YES" id="UkJ-C9-Cj8"/>
+                            <constraint firstItem="EVL-yd-gSy" firstAttribute="top" secondItem="2ah-Za-SIS" secondAttribute="bottom" id="YQQ-Y8-idL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fat" destination="t8Q-TY-zcv" id="vEg-rJ-ry3"/>
+                        <outlet property="thin" destination="Eil-WH-5eM" id="GbO-fu-qcK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QmA-yY-ahs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1576" y="203"/>
+        </scene>
+        <!--Arrow Object Detail View Controller-->
+        <scene sceneID="6o8-Eg-lC2">
+            <objects>
+                <viewController id="I6e-wH-yvj" customClass="ArrowObjectDetailViewController" customModule="EasyDraw" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ys1-wM-GKx"/>
+                        <viewControllerLayoutGuide type="bottom" id="6RA-Xk-nLw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dsw-gu-QWJ">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kts-WW-wsy">
+                                <rect key="frame" x="20" y="28" width="984" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7q5-o0-sHJ" userLabel="Bold">
+                                        <rect key="frame" x="0.0" y="0.0" width="492" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="0XX-Iq-XXw"/>
+                                            <constraint firstAttribute="width" constant="90" id="TTv-UV-iaU"/>
+                                        </constraints>
+                                        <state key="normal" image="arrow"/>
+                                        <connections>
+                                            <action selector="objectButtonPressed:" destination="I6e-wH-yvj" eventType="touchUpInside" id="7aw-GE-eg3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQr-Oh-YkT" userLabel="Narrow">
+                                        <rect key="frame" x="492" y="0.0" width="492" height="90"/>
+                                        <state key="normal" image="arrow"/>
+                                        <connections>
+                                            <action selector="objectButtonPressed:" destination="I6e-wH-yvj" eventType="touchUpInside" id="3le-za-ElK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="HQr-Oh-YkT" firstAttribute="height" secondItem="7q5-o0-sHJ" secondAttribute="height" id="FxJ-dR-cvC"/>
+                                    <constraint firstItem="HQr-Oh-YkT" firstAttribute="width" secondItem="7q5-o0-sHJ" secondAttribute="width" id="O8o-nn-qMr"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kts-WW-wsy" firstAttribute="top" secondItem="Ys1-wM-GKx" secondAttribute="bottom" constant="8" id="0xi-6H-M9Z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kts-WW-wsy" secondAttribute="trailing" id="8x2-SC-vXj"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="kts-WW-wsy" secondAttribute="leading" id="WXt-vU-C3i"/>
+                            <constraint firstItem="6RA-Xk-nLw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kts-WW-wsy" secondAttribute="bottom" constant="8" symbolic="YES" id="iMN-Ot-cl1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bold" destination="7q5-o0-sHJ" id="Eto-JL-hvO"/>
+                        <outlet property="narrow" destination="HQr-Oh-YkT" id="ur0-bJ-ktP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TSd-Qg-lCN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1576" y="872"/>
         </scene>
     </scenes>
     <resources>

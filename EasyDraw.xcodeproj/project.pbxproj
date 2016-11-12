@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C6942711DD6CE1900541B5F /* VehicleObjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6942701DD6CE1900541B5F /* VehicleObjectDetailViewController.swift */; };
+		4C6942731DD6D6E100541B5F /* CrossObjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6942721DD6D6E100541B5F /* CrossObjectDetailViewController.swift */; };
+		4C6942751DD6DD6600541B5F /* ArrowObjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6942741DD6DD6600541B5F /* ArrowObjectDetailViewController.swift */; };
 		4C7AF6CB1DAFF2B30042BB2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7AF6CA1DAFF2B30042BB2E /* Constants.swift */; };
 		4C9C54881DD4161200768F00 /* CircleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C54871DD4161200768F00 /* CircleObject.swift */; };
 		4C9C548A1DD4285400768F00 /* ObjectOnCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C54891DD4285400768F00 /* ObjectOnCanvas.swift */; };
@@ -56,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		4C6942701DD6CE1900541B5F /* VehicleObjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleObjectDetailViewController.swift; sourceTree = "<group>"; };
+		4C6942721DD6D6E100541B5F /* CrossObjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossObjectDetailViewController.swift; sourceTree = "<group>"; };
+		4C6942741DD6DD6600541B5F /* ArrowObjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowObjectDetailViewController.swift; sourceTree = "<group>"; };
 		4C7AF6CA1DAFF2B30042BB2E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4C9C54871DD4161200768F00 /* CircleObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleObject.swift; sourceTree = "<group>"; };
 		4C9C54891DD4285400768F00 /* ObjectOnCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectOnCanvas.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				4CC2778B1DB0096700B31604 /* EditRotationViewController.swift */,
 				4CE5CC461DD69CDC00299619 /* PlaneObjectDetailViewController.swift */,
 				4C6942701DD6CE1900541B5F /* VehicleObjectDetailViewController.swift */,
+				4C6942721DD6D6E100541B5F /* CrossObjectDetailViewController.swift */,
+				4C6942741DD6DD6600541B5F /* ArrowObjectDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 				4CC2778C1DB0096700B31604 /* EditRotationViewController.swift in Sources */,
 				D47F40691DB33C4A003BE8EF /* ViewController.swift in Sources */,
 				4CE5CC351DD55B2300299619 /* CameraObject.swift in Sources */,
+				4C6942751DD6DD6600541B5F /* ArrowObjectDetailViewController.swift in Sources */,
 				4CE5CC311DD5584300299619 /* CloudObject.swift in Sources */,
 				FE1B9DC81D9C3DAF00CA90DB /* AppDelegate.swift in Sources */,
 				4CE5CC451DD57D0000299619 /* extensions.swift in Sources */,
@@ -338,6 +345,7 @@
 				4C7AF6CB1DAFF2B30042BB2E /* Constants.swift in Sources */,
 				4C9C54941DD439DA00768F00 /* ArrowObject.swift in Sources */,
 				4CE5CC331DD55A3B00299619 /* LightningObject.swift in Sources */,
+				4C6942731DD6D6E100541B5F /* CrossObjectDetailViewController.swift in Sources */,
 				4CE5CC371DD55BD800299619 /* PhoneObject.swift in Sources */,
 				4CE5CC411DD572ED00299619 /* PlaneObject.swift in Sources */,
 				4C9C549A1DD4DF7400768F00 /* StarObject.swift in Sources */,

@@ -31,7 +31,14 @@ func createObjectWithTag(_ tag: Int, _ subTag: Int, _ frame: CGRect) -> UIView {
     case 4:
         return RightRightTriangle(frame: frame)
     case 5:
-        return ArrowBoldObject(frame: frame)
+        switch subTag {
+        case 0:
+            return ArrowBoldObject(frame: frame)
+        case 1:
+            return ArrowNarrowObject(frame: frame)
+        default:
+            return ArrowBoldObject(frame: frame)
+        }
     case 6:
         return TrapezoidMidObject(frame: frame)
     case 7:
@@ -39,7 +46,14 @@ func createObjectWithTag(_ tag: Int, _ subTag: Int, _ frame: CGRect) -> UIView {
     case 8:
         return HexagonObject(frame: frame)
     case 9:
-        return CrossFatObject(frame: frame)
+        switch subTag {
+        case 0:
+            return CrossFatObject(frame: frame)
+        case 1:
+            return CrossThinObject(frame: frame)
+        default:
+            return CrossFatObject(frame: frame)
+        }
     case 10:
         return HeartObject(frame: frame)
     case 11:

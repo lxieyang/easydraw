@@ -11,7 +11,9 @@ import UIKit
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopoverPresentationControllerDelegate,
     PlaneOptionsPopoverresentationControllerDelegate,
-    VehicleOptionsPopoverresentationControllerDelegate
+    VehicleOptionsPopoverresentationControllerDelegate,
+    CrossOptionsPopoverresentationControllerDelegate,
+    ArrowOptionsPopoverresentationControllerDelegate
     {
     
     @IBOutlet weak var canvas: UIView!
@@ -81,6 +83,28 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         }
     }
     
+    /* cross selector */
+    var crossTag: Int? {
+        didSet {
+            let imageFrame = CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)
+            let myimage = UIImage(view: createObjectWithTag(9, crossTag!, imageFrame))
+            self.cross.setImage(myimage, for: .normal)
+            
+            viewWillLayoutSubviews()
+        }
+    }
+    
+    /* arrow selector */
+    var arrowTag: Int? {
+        didSet {
+            let imageFrame = CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)
+            let myimage = UIImage(view: createObjectWithTag(5, arrowTag!, imageFrame))
+            self.arrow1.setImage(myimage, for: .normal)
+            
+            viewWillLayoutSubviews()
+        }
+    }
+    
     
     
     /* MARK: View Controller Lifecycle */
@@ -103,8 +127,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         myimage = UIImage(view: RightRightTriangle(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
         self.rightTriangle2.setImage(myimage, for: .normal)
         
-        myimage = UIImage(view: ArrowBoldObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
-        self.arrow1.setImage(myimage, for: .normal)
+        arrowTag = 0
         
         myimage = UIImage(view: TrapezoidMidObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
         self.trapezoid.setImage(myimage, for: .normal)
@@ -115,8 +138,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         myimage = UIImage(view: HexagonObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
         self.hexagon.setImage(myimage, for: .normal)
         
-        myimage = UIImage(view: CrossFatObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
-        self.cross.setImage(myimage, for: .normal)
+        crossTag = 0
         
         myimage = UIImage(view: HeartObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
         self.heart.setImage(myimage, for: .normal)
@@ -174,6 +196,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         long_press_object = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressVehicle(_:)))
         self.vehicle.addGestureRecognizer(tap_object)
         self.vehicle.addGestureRecognizer(long_press_object)
+        
+        tap_object = UITapGestureRecognizer(target: self, action: #selector(self.singleTapCross(_:)))
+        long_press_object = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressCross(_:)))
+        self.cross.addGestureRecognizer(tap_object)
+        self.cross.addGestureRecognizer(long_press_object)
+        
+        tap_object = UITapGestureRecognizer(target: self, action: #selector(self.singleTapArrow(_:)))
+        long_press_object = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressArrow(_:)))
+        self.arrow1.addGestureRecognizer(tap_object)
+        self.arrow1.addGestureRecognizer(long_press_object)
 
     }
     
@@ -241,7 +273,32 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
                     )
                 }
             }
+        } else if segue.identifier == "crossOptions" {
+            if let vc = destination as? CrossObjectDetailViewController {
+                vc.delegate = self
+                if let ppc = vc.popoverPresentationController {
+                    ppc.sourceRect = CGRect(
+                        x: cross.frame.size.width,
+                        y: cross.frame.size.height,
+                        width: 0,
+                        height: 0
+                    )
+                }
+            }
+        } else if segue.identifier == "arrowOptions" {
+            if let vc = destination as? ArrowObjectDetailViewController {
+                vc.delegate = self
+                if let ppc = vc.popoverPresentationController {
+                    ppc.sourceRect = CGRect(
+                        x: arrow1.frame.size.width,
+                        y: arrow1.frame.size.height,
+                        width: 0,
+                        height: 0
+                    )
+                }
+            }
         }
+
 
     }
     
@@ -262,6 +319,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
     func longPressVehicle(_ gestureRecogniser: UILongPressGestureRecognizer) {
         performSegue(withIdentifier: "vehicleOptions", sender: self)
     }
+    
+    // gesture recognizer for cross
+    func singleTapCross(_ gestureRecogniser: UITapGestureRecognizer) {
+        DrawButtonPressed(cross)
+    }
+    
+    func longPressCross(_ gestureRecogniser: UILongPressGestureRecognizer) {
+        performSegue(withIdentifier: "crossOptions", sender: self)
+    }
+    
+    // gesture recognizer for arrow
+    func singleTapArrow(_ gestureRecogniser: UITapGestureRecognizer) {
+        DrawButtonPressed(arrow1)
+    }
+    
+    func longPressArrow(_ gestureRecogniser: UILongPressGestureRecognizer) {
+        performSegue(withIdentifier: "arrowOptions", sender: self)
+    }
+
     
     
     // long press gesture recognizer
@@ -334,14 +410,27 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         self.rotateDegree = CGFloat(RotationDegree[degree]!)
     }
     
-    // implement PlaneOptions PlaneOptionsPopoverresentationControllerDelegate protocal
+    // implement PlaneOptionsPopoverresentationControllerDelegate protocal
     func updatePlaneModel(_ model: Int) {
         self.planeTag = model
     }
     
+    // implement VehicleOptionsPopoverresentationControllerDelegate protocal
     func updateVehicleTag(_ model: Int) {
         self.vehicleTag = model
     }
+    
+    // implement CrossOptionsPopoverresentationControllerDelegate protocal
+    func updateCrossTag(_ model: Int) {
+        self.crossTag = model
+    }
+    
+    // implement ArrowOptionsPopoverresentationControllerDelegate protocal
+    func updateArrowTag(_ model: Int) {
+        self.arrowTag = model
+        print ("updating")
+    }
+
     
     
     
@@ -355,6 +444,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate,RotationPopo
         
         var subTag = 0
         switch sender.tag {
+        case 5:
+            subTag = arrowTag!
+            break
+        case 9:
+            subTag = crossTag!
+            break
         case 15:
             subTag = vehicleTag!
             break
