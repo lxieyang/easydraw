@@ -18,6 +18,12 @@ extension UIImage {
     }
 }
 
+extension UIImagePickerController {
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.landscape
+    }
+}
+
 func createObjectWithTag(_ tag: Int, _ subTag: Int, _ frame: CGRect) -> MyView {
     switch tag {
     case 0:

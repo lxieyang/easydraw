@@ -13,6 +13,8 @@
 ### Current Interface
 ![Preview Image](./preview/preview.png)
 
+### Working Example
+![Working Example](./preview/gif1.gif)
 
 ### Sample Work
 ![Sample Work](./preview/pic1.jpg)

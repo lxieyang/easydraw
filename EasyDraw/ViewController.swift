@@ -730,9 +730,10 @@ class ViewController: UIViewController,
                         withDuration: objectDrawing.scalingDuration,
                         animations: {
                             currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
                     },
                         completion: { finished in
-                            currentObject.scalingFactor = scalingFactor
+                            //currentObject.scalingFactor = scalingFactor
                     })
                 }
             } else if let currentObject = objects[selected]! as? MyImageView {
@@ -742,9 +743,11 @@ class ViewController: UIViewController,
                         withDuration: objectDrawing.scalingDuration,
                         animations: {
                             currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+
                     },
                         completion: { finished in
-                            currentObject.scalingFactor = scalingFactor
+                            //currentObject.scalingFactor = scalingFactor
                     })
                 }
             }
