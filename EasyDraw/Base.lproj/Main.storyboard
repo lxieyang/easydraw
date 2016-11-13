@@ -471,10 +471,16 @@
                                             <constraint firstAttribute="height" constant="45" id="eyH-1x-AzQ"/>
                                         </constraints>
                                         <state key="normal" image="Expand-52"/>
+                                        <connections>
+                                            <action selector="scaleIncrease:" destination="goA-Ya-Al9" eventType="touchUpInside" id="svU-xG-8rV"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YB-mI-iv6" userLabel="Shrink">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YB-mI-iv6" userLabel="Shrink">
                                         <rect key="frame" x="0.0" y="65" width="45" height="45"/>
                                         <state key="normal" image="Collapse-52"/>
+                                        <connections>
+                                            <action selector="scaleIncrease:" destination="goA-Ya-Al9" eventType="touchUpInside" id="xRH-vs-Ciy"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

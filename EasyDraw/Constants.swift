@@ -16,6 +16,9 @@ struct objectDrawing {
     static let lineWidthOnCanvas = 3.0
     static let initialObjectSize = CGFloat(100)
     static let buttonSize = CGFloat(55)
+    static let scalingIncreaseFactor = CGFloat(1.1)
+    static let scalingDecreaseFactor = CGFloat(0.9)
+    static let scalingDuration = 0.2
 }
 
 

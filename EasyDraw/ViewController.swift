@@ -10,10 +10,12 @@ import UIKit
 
 class MyView: UIView {
     var id: Int = 0
+    var scalingFactor: CGFloat = 1.0
 }
 
 class MyImageView: UIImageView{
     var id: Int = 0
+    var scalingFactor: CGFloat = 1.0
 }
 
 
@@ -708,6 +710,50 @@ class ViewController: UIViewController,
         indexes.removeAll()
         selectedObjectID = nil
     }
+    
+    @IBAction func scaleIncrease(_ sender: UIButton) {
+        let canvasWidth = self.canvas.frame.width
+        let canvasHeight = self.canvas.frame.height
+        let maxWidthFactor = canvasWidth / objectDrawing.initialObjectSize
+        let maxHeightFactor = canvasHeight / objectDrawing.initialObjectSize
+        let maxScalingFactor = Double(min(maxWidthFactor, maxHeightFactor) * 0.9)
+        let minScalingFactor = Double(0.3)
+        
+        let scale = sender.tag == 0 ? objectDrawing.scalingIncreaseFactor : objectDrawing.scalingDecreaseFactor
+        
+        if let selected = selectedObjectID {
+            // let currentObject = objects[selected]!
+            if let currentObject = objects[selected]! as? MyView {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+                            currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                    },
+                        completion: { finished in
+                            currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            } else if let currentObject = objects[selected]! as? MyImageView {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+                            currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                    },
+                        completion: { finished in
+                            currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            }
+        } else {
+            alertOpen()
+        }
+
+    }
+    
     @IBAction func up(_ sender: AnyObject) {
         if let selected = selectedObjectID {
             let currentObject = objects[selected]!
