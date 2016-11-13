@@ -1,6 +1,6 @@
 # Project EasyDraw: An Addition to Assisitive Technology
 
-
+![App Icon](./preview/icon.png)
 
 ## Team Member
 - [Xieyang Liu](http://lxieyang.github.io)
@@ -10,5 +10,11 @@
 
 ## Preview
 
-#### Current Interface
+### Current Interface
 ![Preview Image](./preview/preview.png)
+
+
+### Sample Work
+![Sample Work](./preview/pic1.jpg)
+
+![Sample Work](./preview/pic2.jpg)
