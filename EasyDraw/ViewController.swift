@@ -18,7 +18,7 @@ class MyImageView: UIImageView{
     var scalingFactor: CGFloat = 1.0
 }
 
-
+@available(iOS 10.0, *)
 class ViewController: UIViewController,
     UIGestureRecognizerDelegate,
     UIImagePickerControllerDelegate,
@@ -225,6 +225,45 @@ class ViewController: UIViewController,
 
     }
     
+    var isBeingLoaded : Bool = false
+    var loadedObjects : [UIView] = [UIView]()
+    override func viewWillAppear(_ animated: Bool) {
+        if (isBeingLoaded) {
+            // clear all existing objects
+            for id in objects.keys{
+                objects[id]!.removeFromSuperview()
+            }
+            
+            objects.removeAll()
+            indexes.removeAll()
+            selectedObjectID = nil
+            
+            objectIDCounter = 0
+            
+            for object in loadedObjects {
+                self.indexes.append(objectIDCounter)
+                self.objects[objectIDCounter] = object
+                objectIDCounter += 1
+                self.canvas.addSubview(object)
+                object.setNeedsDisplay()
+            }
+            
+            loadedObjects.removeAll()
+            
+            // reset rotation parameters
+            self.rotateDegree = RotationDegree[Rotation.defaultRotationDegree]!
+            self.rotateOrientation = RotationOrientation[Rotation.defaultRotationOrientation]!
+            
+            viewWillLayoutSubviews()
+            
+            isBeingLoaded = false
+            
+            let ac = UIAlertController(title: "Loaded!", message: "Your free body diagram has been loaded.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -313,6 +352,9 @@ class ViewController: UIViewController,
                     )
                 }
             }
+        } else if segue.identifier == "saveDiagramSegue" {
+            let svc = destination as? saveDiagramViewController
+            svc?.objects = self.objects
         }
 
 

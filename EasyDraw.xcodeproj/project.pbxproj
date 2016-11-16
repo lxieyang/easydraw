@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C07A6801DDC1A33005B946D /* LoadDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C07A67F1DDC1A33005B946D /* LoadDiagramViewController.swift */; };
+		4C07A6821DDC1A5D005B946D /* saveDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C07A6811DDC1A5D005B946D /* saveDiagramViewController.swift */; };
+		4C07A6851DDC1B8F005B946D /* savedDiagrams.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C07A6831DDC1B8F005B946D /* savedDiagrams.xcdatamodeld */; };
 		4C6942711DD6CE1900541B5F /* VehicleObjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6942701DD6CE1900541B5F /* VehicleObjectDetailViewController.swift */; };
 		4C6942731DD6D6E100541B5F /* CrossObjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6942721DD6D6E100541B5F /* CrossObjectDetailViewController.swift */; };
 		4C6942751DD6DD6600541B5F /* ArrowObjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6942741DD6DD6600541B5F /* ArrowObjectDetailViewController.swift */; };
@@ -57,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C07A67F1DDC1A33005B946D /* LoadDiagramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadDiagramViewController.swift; sourceTree = "<group>"; };
+		4C07A6811DDC1A5D005B946D /* saveDiagramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = saveDiagramViewController.swift; sourceTree = "<group>"; };
+		4C07A6841DDC1B8F005B946D /* savedDiagrams.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = savedDiagrams.xcdatamodel; sourceTree = "<group>"; };
 		4C6942701DD6CE1900541B5F /* VehicleObjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleObjectDetailViewController.swift; sourceTree = "<group>"; };
 		4C6942721DD6D6E100541B5F /* CrossObjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossObjectDetailViewController.swift; sourceTree = "<group>"; };
 		4C6942741DD6DD6600541B5F /* ArrowObjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowObjectDetailViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 		4C9C54831DD4151F00768F00 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4C07A6831DDC1B8F005B946D /* savedDiagrams.xcdatamodeld */,
 				4C7AF6CA1DAFF2B30042BB2E /* Constants.swift */,
 				4CE5CC2D1DD5077C00299619 /* UIBezierPath+.swift */,
 				4CE5CC441DD57D0000299619 /* extensions.swift */,
@@ -175,6 +182,8 @@
 				4C6942701DD6CE1900541B5F /* VehicleObjectDetailViewController.swift */,
 				4C6942721DD6D6E100541B5F /* CrossObjectDetailViewController.swift */,
 				4C6942741DD6DD6600541B5F /* ArrowObjectDetailViewController.swift */,
+				4C07A67F1DDC1A33005B946D /* LoadDiagramViewController.swift */,
+				4C07A6811DDC1A5D005B946D /* saveDiagramViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -342,6 +351,7 @@
 				4C9C548E1DD4365A00768F00 /* EquicruralTraingleObject.swift in Sources */,
 				4CE5CC2C1DD5017A00299619 /* HeartObject.swift in Sources */,
 				4C9C54981DD43E5300768F00 /* TrapezoidObject.swift in Sources */,
+				4C07A6851DDC1B8F005B946D /* savedDiagrams.xcdatamodeld in Sources */,
 				4C7AF6CB1DAFF2B30042BB2E /* Constants.swift in Sources */,
 				4C9C54941DD439DA00768F00 /* ArrowObject.swift in Sources */,
 				4CE5CC331DD55A3B00299619 /* LightningObject.swift in Sources */,
@@ -356,7 +366,9 @@
 				4CE5CC261DD4F7C200299619 /* ParallelogramObject.swift in Sources */,
 				4CE5CC2A1DD4FE6500299619 /* CrossObject.swift in Sources */,
 				4C9C54921DD4393000768F00 /* RightRightTriangle.swift in Sources */,
+				4C07A6821DDC1A5D005B946D /* saveDiagramViewController.swift in Sources */,
 				4CE5CC281DD4FC1300299619 /* HexagonObject.swift in Sources */,
+				4C07A6801DDC1A33005B946D /* LoadDiagramViewController.swift in Sources */,
 				4CE5CC3B1DD55D5600299619 /* HouseObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,6 +584,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4C07A6831DDC1B8F005B946D /* savedDiagrams.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4C07A6841DDC1B8F005B946D /* savedDiagrams.xcdatamodel */,
+			);
+			currentVersion = 4C07A6841DDC1B8F005B946D /* savedDiagrams.xcdatamodel */;
+			path = savedDiagrams.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FE1B9DBC1D9C3DAF00CA90DB /* Project object */;
 }
