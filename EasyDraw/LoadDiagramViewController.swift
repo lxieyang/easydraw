@@ -11,6 +11,7 @@ import UIKit
 @available(iOS 10.0, *)
 class LoadDiagramViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
     @IBOutlet weak var tableView: UITableView!
     
     let loadDiagramSegueIdentifier = "LoadDiagramSegue"
@@ -30,8 +31,6 @@ class LoadDiagramViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == loadDiagramSegueIdentifier, let destination = segue.destination as? ViewController, let diagramIndex = tableView.indexPathForSelectedRow?.row {
-            destination.isBeingLoaded = true
-            
             // load the objects
             destination.loadedObjects = loadDiagram(index: diagramIndex)
         }
