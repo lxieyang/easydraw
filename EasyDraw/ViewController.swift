@@ -56,6 +56,11 @@ class ViewController: UIViewController,
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    // save and load
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
+    @IBOutlet weak var loadButton: UIButton!
     
     // object button
     @IBOutlet weak var square: UIButton!
@@ -349,8 +354,20 @@ class ViewController: UIViewController,
                 }
             }
         } else if segue.identifier == "saveDiagramSegue" {
-            let svc = destination as? saveDiagramViewController
-            svc?.objects = self.objects
+            if let svc = destination as? saveDiagramViewController {
+                svc.objects = self.objects
+                // define popover frame
+                if let ppc = svc.popoverPresentationController {
+                    // set the source rect to be the frame of the rotate button
+                    ppc.sourceRect = CGRect(
+                        x: saveButton.frame.size.width,
+                        y: saveButton.frame.size.height,
+                        width: 0,
+                        height: 0
+                    )
+                }
+            }
+            
         }
 
 

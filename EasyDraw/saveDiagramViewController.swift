@@ -23,6 +23,11 @@ class saveDiagramViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingCompressedSize)  // auto-layout to fix size
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -97,6 +102,7 @@ class saveDiagramViewController: UIViewController {
         let ac = UIAlertController(title: "Saved!", message: "Your free body diagram has been saved.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
+        
     }
     
     // return false if the title of the diagram already exists
