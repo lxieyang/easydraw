@@ -245,6 +245,10 @@ class ViewController: UIViewController,
         for object in loadedObjects {
             self.indexes.append(objectIDCounter)
             self.objects[objectIDCounter] = object
+            // add tap gesture recognizer
+            let selectGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selectGestureAction(_:)))
+            object.addGestureRecognizer(selectGestureRecognizer)
+            
             objectIDCounter += 1
             self.canvas.addSubview(object)
             object.setNeedsDisplay()
