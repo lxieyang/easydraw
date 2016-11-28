@@ -254,7 +254,7 @@ class ViewController: UIViewController,
             object.setNeedsDisplay()
         }
         
-        currentIndex = 0
+        // currentIndex = 0
         
         loadedObjects.removeAll()
         
