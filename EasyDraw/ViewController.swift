@@ -129,10 +129,22 @@ class ViewController: UIViewController,
     }
     
     
-    
     /* MARK: View Controller Lifecycle */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // add shadow to long-pressable buttons
+        showLongPressable(self.rotateButton)
+        showLongPressable(self.arrow1)
+        showLongPressable(self.cross)
+        showLongPressable(self.vehicle)
+        showLongPressable(self.plane)
+        showLongPressable(self.upButton)
+        showLongPressable(self.downButton)
+        showLongPressable(self.leftButton)
+        showLongPressable(self.rightButton)
+        
+        
         
         // set button image
         var myimage = UIImage(view: RectObject(frame: CGRect(x: 0, y: 0, width: objectDrawing.buttonSize, height: objectDrawing.buttonSize)))
@@ -229,6 +241,16 @@ class ViewController: UIViewController,
         self.arrow1.addGestureRecognizer(long_press_object)
 
     }
+    
+    func showLongPressable(_ toMakeShadow: UIButton) {
+        toMakeShadow.layer.shadowColor = UIColor.gray.cgColor
+        toMakeShadow.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        toMakeShadow.layer.shadowOpacity = 1.0
+        toMakeShadow.layer.shadowRadius = 0.0
+        toMakeShadow.layer.masksToBounds = false
+        toMakeShadow.layer.cornerRadius = 5.0
+    }
+    
     
     var loadedObjects : [UIView] = [UIView]()
     @IBAction func loadDiagram(segue: UIStoryboardSegue) {
