@@ -810,7 +810,9 @@ class ViewController: UIViewController,
                     UIView.animate(
                         withDuration: objectDrawing.scalingDuration,
                         animations: {
-                            currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            // The CGAffineTransform solution has been deprecated
+                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                             currentObject.scalingFactor = scalingFactor     // put here for smooth effect
                     },
                         completion: { finished in
@@ -823,7 +825,9 @@ class ViewController: UIViewController,
                     UIView.animate(
                         withDuration: objectDrawing.scalingDuration,
                         animations: {
-                            currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            // The CGAffineTransform solution has been deprecated
+                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                             currentObject.scalingFactor = scalingFactor     // put here for smooth effect
 
                     },
