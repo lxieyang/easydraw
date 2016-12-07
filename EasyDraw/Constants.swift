@@ -47,8 +47,11 @@ struct RotationAngleInDegree {
 let RotationDegree: [Int : CGFloat] = [
     5 : CGFloat(Float.pi / 180 * 5),
     10 : CGFloat(Float.pi / 180 * 10),
+    15 : CGFloat(Float.pi / 180 * 15),
     20 : CGFloat(Float.pi / 180 * 20),
+    25 : CGFloat(Float.pi / 180 * 25),
     30 : CGFloat(Float.pi / 180 * 30),
+    45 : CGFloat(Float.pi / 180 * 45),
     60 : CGFloat(Float.pi / 180 * 60),
     90 : CGFloat(Float.pi / 180 * 90),
     180 : CGFloat(Float.pi / 180 * 180)
