@@ -18,6 +18,11 @@ class MyImageView: UIImageView{
     var scalingFactor: CGFloat = 1.0
 }
 
+class MyTextField: UITextField{
+    var id: Int = 0
+    var scalingFactor: CGFloat = 1.0
+}
+
 @available(iOS 10.0, *)
 class ViewController: UIViewController,
     UIGestureRecognizerDelegate,
@@ -606,6 +611,9 @@ class ViewController: UIViewController,
         } else if let object = sender.view as? MyImageView {
             highlightObject(object: object)
             select(objectID: object.id)
+        } else if let object = sender.view as? MyTextField {
+            highlightObject(object: object)
+            select(objectID: object.id)
         }
     }
     
@@ -645,6 +653,39 @@ class ViewController: UIViewController,
     }
     
     
+    @IBAction func TextButtonPressed(_ sender: Any) {
+        let fieldWidth = objectDrawing.initialObjectSize
+        let fieldHeight = objectDrawing.initialObjectSize
+        let originX = canvas.bounds.midX - fieldWidth / 2
+        let originY = canvas.bounds.midY - fieldHeight / 2
+        let imageFrame = CGRect(origin: CGPoint(x: originX, y : originY), size: CGSize(width: fieldWidth, height: fieldHeight))
+
+        let textField = MyTextField(frame: imageFrame)
+        textField.backgroundColor = UIColor.white
+        textField.textAlignment = .center
+        textField.font = .systemFont(ofSize: 30)
+
+
+        textField.id = objectIDCounter
+
+        let selectGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selectGestureAction(_:)))
+        textField.addGestureRecognizer(selectGestureRecognizer)
+
+        objects[objectIDCounter] = textField
+        //        // the image imported will be at the bottom
+        self.canvas.sendSubview(toBack: textField)
+        indexes.append(objectIDCounter)
+        objectIDCounter += 1
+        //
+        self.canvas.addSubview(textField)
+        textField.setNeedsDisplay()
+        
+        //        // reset rotation parameters
+        self.rotateDegree = RotationDegree[Rotation.defaultRotationDegree]!
+        self.rotateOrientation = RotationOrientation[Rotation.defaultRotationOrientation]!
+        //
+        viewWillLayoutSubviews()
+    }
     
     @IBAction func DrawButtonPressed(_ sender: AnyObject) {
         print ("Tag: \(sender.tag)")
@@ -843,6 +884,20 @@ class ViewController: UIViewController,
                                 currentObject.scalingFactor = scalingFactor     // put here for smooth effect
                                 
                             }
+                    },
+                        completion: { finished in
+                            //currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            } else if let currentObject = objects[selected]! as? MyTextField {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+                            currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+
                     },
                         completion: { finished in
                             //currentObject.scalingFactor = scalingFactor
