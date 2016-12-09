@@ -810,10 +810,17 @@ class ViewController: UIViewController,
                     UIView.animate(
                         withDuration: objectDrawing.scalingDuration,
                         animations: {
-                            // The CGAffineTransform solution has been deprecated
-                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
-                            currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
-                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                            let tempObject = currentObject
+                            
+                            tempObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            
+                            if (tempObject.frame.minX > self.canvas.bounds.minX && tempObject.frame.maxX < self.canvas.bounds.maxX && tempObject.frame.minY > self.canvas.bounds.minY && tempObject.frame.maxY < self.canvas.bounds.maxY) {
+                                
+                                currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                
+                                currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                                
+                            }
                     },
                         completion: { finished in
                             //currentObject.scalingFactor = scalingFactor
@@ -825,11 +832,17 @@ class ViewController: UIViewController,
                     UIView.animate(
                         withDuration: objectDrawing.scalingDuration,
                         animations: {
-                            // The CGAffineTransform solution has been deprecated
-                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
-                            currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
-                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
-
+                            let tempObject = currentObject
+                            
+                            tempObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            
+                            if (tempObject.frame.minX > self.canvas.bounds.minX && tempObject.frame.maxX < self.canvas.bounds.maxX && tempObject.frame.minY > self.canvas.bounds.minY && tempObject.frame.maxY < self.canvas.bounds.maxY) {
+                                
+                                currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                
+                                currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                                
+                            }
                     },
                         completion: { finished in
                             //currentObject.scalingFactor = scalingFactor
@@ -971,13 +984,28 @@ class ViewController: UIViewController,
             let touch = touches.first
             
             location = (touch?.location(in: self.view))!
-            location.x = location.x - 170
+            
+            location.x = location.x - 135
+            
             location.y = location.y - 30
             
-            if (location.x < canvas.bounds.minX) { location.x = canvas.bounds.minX + 39 }
-            if (location.x > canvas.bounds.maxX) { location.x = canvas.bounds.maxX - 39 }
-            if (location.y < canvas.bounds.minY) { location.y = canvas.bounds.minY + 39 }
-            if (location.y > canvas.bounds.maxY) { location.y = canvas.bounds.maxY - 39 }
+            
+            
+            if (location.x - (objects[selected]!.frame.size.width / 2) < canvas.bounds.minX) { location.x = canvas.bounds.minX + (objects[selected]!.frame.size.width / 2) }
+            
+            
+            
+            if (location.x + objects[selected]!.bounds.maxX > canvas.bounds.maxX) { location.x = canvas.bounds.maxX - (objects[selected]!.frame.size.width / 2) }
+            
+            
+            
+            if (location.y - (objects[selected]!.frame.size.height / 2) < canvas.bounds.minY) { location.y = canvas.bounds.minY + (objects[selected]!.frame.size.height / 2) }
+            
+            
+            
+            if (location.y + objects[selected]!.bounds.maxY > canvas.bounds.maxY) { location.y = canvas.bounds.maxY - (objects[selected]!.frame.size.height / 2) }
+            
+            
             
             objects[selected]!.center = location
             
