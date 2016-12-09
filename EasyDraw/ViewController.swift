@@ -203,10 +203,64 @@ class ViewController: UIViewController,
 
         
         
-        // Do any additional setup after loading the view.
-        for id in objects.keys {
-            self.canvas.addSubview(objects[id]!)
+        // load default saved project on last exit if there exists one
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        var savedDiagrams : [SavedDiagram] = []
+        
+        do{
+            
+            savedDiagrams = try context.fetch(SavedDiagram.fetchRequest())
+            
+            print("load diagram info from core data")
+            
         }
+            
+        catch {
+            
+            print("Fetching failed!")
+            
+        }
+        
+        for savedDiagram in savedDiagrams {
+            
+            if (savedDiagram.title == "DEFAULT_SAVE_ON_EXIT") {
+                
+                var savedObjectFileNames : [String] = [String]()
+                
+                if let loadedObjectFileNames = NSKeyedUnarchiver.unarchiveObject(withFile: savedDiagram.objectArrayFile!) as? [String] {
+                    
+                    savedObjectFileNames = loadedObjectFileNames
+                    
+                }
+                
+                
+                
+                loadedObjects = [UIView]()
+                
+                for filename in savedObjectFileNames {
+                    
+                    var savedObject : UIView = UIView()
+                    
+                    if let loadedObject = NSKeyedUnarchiver.unarchiveObject(withFile: filename) as? UIView {
+                        
+                        savedObject = loadedObject
+                        
+                    }
+                    
+                    loadedObjects.append(savedObject)
+                    
+                }
+                
+                load(isDefaultLoad: true)
+                
+                break
+                
+            }
+            
+        }
+
         
         canvas.isUserInteractionEnabled = true
         
@@ -244,6 +298,10 @@ class ViewController: UIViewController,
         long_press_object = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressArrow(_:)))
         self.arrow1.addGestureRecognizer(tap_object)
         self.arrow1.addGestureRecognizer(long_press_object)
+        
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
 
     }
     
@@ -256,45 +314,147 @@ class ViewController: UIViewController,
         toMakeShadow.layer.cornerRadius = 5.0
     }
     
+    // whenever the HOME button is pressed once or twice
+    // save the current whole project
+    func appMovedToBackground() {
+        
+        let saveVC = saveDiagramViewController()
+        
+        saveVC.objects = objects
+        
+        saveVC.thumbnailCanvas = convertCurrentCanvasToUIImage()
+        
+        saveVC.save(isDefaultSave: true)
+        
+        print("App moved to background!")
+        
+    }
     
     var loadedObjects : [UIView] = [UIView]()
     @IBAction func loadDiagram(segue: UIStoryboardSegue) {
+        load(isDefaultLoad: false)
+    }
+    
+    func load(isDefaultLoad: Bool) {
+        
         for id in objects.keys{
+            
             objects[id]!.removeFromSuperview()
+            
         }
         
         objects.removeAll()
+        
         indexes.removeAll()
+        
         selectedObjectID = nil
         
         objectIDCounter = 0
         
+        
         for object in loadedObjects {
-            self.indexes.append(objectIDCounter)
-            self.objects[objectIDCounter] = object
-            // add tap gesture recognizer
-            let selectGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selectGestureAction(_:)))
-            object.addGestureRecognizer(selectGestureRecognizer)
             
-            objectIDCounter += 1
-            self.canvas.addSubview(object)
-            object.setNeedsDisplay()
+            self.indexes.append(objectIDCounter)
+            
+            // cast UIView to MyView
+            
+            // otherwise there will be problem with selection
+            
+            if (object is MyView) {
+                
+                var objectToBeLoaded : MyView
+                
+                objectToBeLoaded = object as! MyView
+                
+                objectToBeLoaded.id = objectIDCounter
+                
+                self.objects[objectIDCounter] = objectToBeLoaded
+                
+                // add tap gesture recognizer
+                
+                let selectGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selectGestureAction(_:)))
+                
+                objectToBeLoaded.addGestureRecognizer(selectGestureRecognizer)
+                
+                objectIDCounter += 1
+                
+                self.canvas.addSubview(objectToBeLoaded)
+                
+                objectToBeLoaded.setNeedsDisplay()
+                
+            }
+                
+            else if (object is MyImageView) {
+                
+                // cast UIView to MyImageView when loading an image imported from photo library
+                
+                var myImageViewObject : MyImageView
+                
+                myImageViewObject = object as! MyImageView
+                
+                myImageViewObject.id = objectIDCounter
+                
+                self.objects[objectIDCounter] = myImageViewObject
+                
+                let selectGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selectGestureAction(_:)))
+                
+                myImageViewObject.addGestureRecognizer(selectGestureRecognizer)
+                
+                objectIDCounter += 1
+                
+                self.canvas.addSubview(myImageViewObject)
+                
+                myImageViewObject.setNeedsDisplay()
+                
+            }
+            else if (object is MyTextField) {
+                var myTextFieldObject : MyTextField
+                
+                myTextFieldObject = object as! MyTextField
+                
+                myTextFieldObject.id = objectIDCounter
+                
+                self.objects[objectIDCounter] = myTextFieldObject
+                
+                let selectGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selectGestureAction(_:)))
+                
+                myTextFieldObject.addGestureRecognizer(selectGestureRecognizer)
+                
+                objectIDCounter += 1
+                
+                self.canvas.addSubview(myTextFieldObject)
+                
+                myTextFieldObject.setNeedsDisplay()
+            }
+            
         }
         
-        // currentIndex = 0
+        currentIndex = 0
         
         loadedObjects.removeAll()
         
         // reset rotation parameters
+        
         self.rotateDegree = RotationDegree[Rotation.defaultRotationDegree]!
+        
         self.rotateOrientation = RotationOrientation[Rotation.defaultRotationOrientation]!
         
         viewWillLayoutSubviews()
-                
-        let ac = UIAlertController(title: "Loaded!", message: "Your free body diagram has been loaded.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        
+        
+        
+        if (!isDefaultLoad) {
+            
+            let ac = UIAlertController(title: "Loaded!", message: "Your free body diagram has been loaded.", preferredStyle: .alert)
+            
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            present(ac, animated: true)
+            
+        }
+        
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -387,6 +547,7 @@ class ViewController: UIViewController,
         } else if segue.identifier == "saveDiagramSegue" {
             if let svc = destination as? saveDiagramViewController {
                 svc.objects = self.objects
+                svc.thumbnailCanvas = convertCurrentCanvasToUIImage()
                 // define popover frame
                 if let ppc = svc.popoverPresentationController {
                     // set the source rect to be the frame of the rotate button
@@ -617,25 +778,54 @@ class ViewController: UIViewController,
         }
     }
     
-    // export to photo library
-    @IBAction func exportToPhotoLibrary(_ sender: AnyObject) {
+    func convertCurrentCanvasToUIImage() -> UIImage {
+        
         // first need to deselect if any object gets selected
+        
         if selectedObjectID != nil {
+            
             removeHighlight(object: objects[selectedObjectID!])
+            
         }
+        
+        
         
         // convert UIView to a UIImage
+        
         UIGraphicsBeginImageContextWithOptions(canvas.bounds.size, true, 0)
+        
         canvas.drawHierarchy(in: canvas.bounds, afterScreenUpdates: true)
+        
         let image = UIGraphicsGetImageFromCurrentImageContext()
+        
         UIGraphicsEndImageContext()
         
-        UIImageWriteToSavedPhotosAlbum(image!, self, #selector(exportStatus(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        
+        
         
         // reselect the object
+        
         if selectedObjectID != nil {
+            
             highlightObject(object: objects[selectedObjectID!])
+            
         }
+        
+        return image!
+        
+    }
+    
+    
+    
+    // export to photo library
+    
+    @IBAction func exportToPhotoLibrary(_ sender: AnyObject) {
+        
+        let image = convertCurrentCanvasToUIImage()
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(exportStatus(_:didFinishSavingWithError:contextInfo:)), nil)
+        
     }
     
     // tells the user if the diagram has been exported successfully

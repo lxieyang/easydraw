@@ -43,10 +43,37 @@ class LoadDiagramViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Diagram", for: indexPath)
-        cell.textLabel?.text = diagrams[indexPath.row].title
+        let cellIdentifier = "FBDTableViewCell"
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FBDTableViewCell
+        
+        cell.titleLabel?.text = diagrams[indexPath.row].title
+        
+        cell.thumbnailCanvasImageView.image = loadThumbnail(index: indexPath.row)
+        
         return cell
     }
+    
+    func loadThumbnail(index: Int) -> UIImage {
+        
+        let path = getDocumentsDirectory()
+        
+        let diagramDirectory = path.appendingPathComponent(diagrams[index].title!)
+        
+        let thumbnailCanvasPath = diagramDirectory.appendingPathComponent("thumbnailCanvas")
+        
+        var image : UIImage = UIImage()
+        
+        if let loadedThumbnail = NSKeyedUnarchiver.unarchiveObject(withFile: thumbnailCanvasPath.path) as? UIImage {
+            
+            image = loadedThumbnail
+            
+        }
+        
+        return image
+        
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

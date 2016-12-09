@@ -41,6 +41,7 @@
 		4CE5CC431DD575EF00299619 /* VehicleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5CC421DD575EF00299619 /* VehicleObject.swift */; };
 		4CE5CC451DD57D0000299619 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5CC441DD57D0000299619 /* extensions.swift */; };
 		4CE5CC471DD69CDC00299619 /* PlaneObjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5CC461DD69CDC00299619 /* PlaneObjectDetailViewController.swift */; };
+		D47B12351DFB67B0000F147E /* FBDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B12341DFB67B0000F147E /* FBDTableViewCell.swift */; };
 		D47F40691DB33C4A003BE8EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F40681DB33C4A003BE8EF /* ViewController.swift */; };
 		FE1B9DC81D9C3DAF00CA90DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */; };
 		FE1B9DCD1D9C3DAF00CA90DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1B9DCB1D9C3DAF00CA90DB /* Main.storyboard */; };
@@ -94,6 +95,7 @@
 		4CE5CC421DD575EF00299619 /* VehicleObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleObject.swift; sourceTree = "<group>"; };
 		4CE5CC441DD57D0000299619 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		4CE5CC461DD69CDC00299619 /* PlaneObjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneObjectDetailViewController.swift; sourceTree = "<group>"; };
+		D47B12341DFB67B0000F147E /* FBDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBDTableViewCell.swift; sourceTree = "<group>"; };
 		D47F40681DB33C4A003BE8EF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FE1B9DC41D9C3DAF00CA90DB /* EasyDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1B9DC71D9C3DAF00CA90DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				4C9C54871DD4161200768F00 /* CircleObject.swift */,
+				D47B12341DFB67B0000F147E /* FBDTableViewCell.swift */,
 				4C9C54891DD4285400768F00 /* ObjectOnCanvas.swift */,
 				4C9C548B1DD42DDC00768F00 /* RectObject.swift */,
 				4C9C548D1DD4365A00768F00 /* EquicruralTraingleObject.swift */,
@@ -358,6 +361,7 @@
 				4C6942731DD6D6E100541B5F /* CrossObjectDetailViewController.swift in Sources */,
 				4CE5CC371DD55BD800299619 /* PhoneObject.swift in Sources */,
 				4CE5CC411DD572ED00299619 /* PlaneObject.swift in Sources */,
+				D47B12351DFB67B0000F147E /* FBDTableViewCell.swift in Sources */,
 				4C9C549A1DD4DF7400768F00 /* StarObject.swift in Sources */,
 				4CE5CC2E1DD5077C00299619 /* UIBezierPath+.swift in Sources */,
 				4C9C548A1DD4285400768F00 /* ObjectOnCanvas.swift in Sources */,
