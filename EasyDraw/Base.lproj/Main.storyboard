@@ -113,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JZQ-3D-0IW" userLabel="Select Delete">
-                                <rect key="frame" x="20" y="28" width="95" height="220"/>
+                                <rect key="frame" x="20" y="28" width="95" height="174"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDf-Qt-GNG">
                                         <rect key="frame" x="0.0" y="0.0" width="95" height="36"/>
@@ -162,27 +162,15 @@
                                             <action selector="deselectObject:" destination="goA-Ya-Al9" eventType="touchUpInside" id="MV9-qs-DoQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV5-NN-jSh">
-                                        <rect key="frame" x="0.0" y="184" width="95" height="36"/>
-                                        <color key="backgroundColor" red="0.84313725490000002" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <state key="normal" title="Delete">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deleteSelectedObject:" destination="goA-Ya-Al9" eventType="touchUpInside" id="fbq-BR-yxr"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="5fY-vy-9nu" firstAttribute="width" secondItem="kYH-kY-BAb" secondAttribute="width" id="Bvz-qm-d5U"/>
                                     <constraint firstItem="3Wi-9k-HAA" firstAttribute="width" secondItem="5fY-vy-9nu" secondAttribute="width" id="hs4-UP-rmZ"/>
-                                    <constraint firstItem="LV5-NN-jSh" firstAttribute="width" secondItem="3Wi-9k-HAA" secondAttribute="width" id="pyt-WY-F2Q"/>
                                     <constraint firstItem="kYH-kY-BAb" firstAttribute="width" secondItem="UDf-Qt-GNG" secondAttribute="width" id="vUk-xr-whu"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="nNc-JF-ZSL" userLabel="Clear Redo Undo">
-                                <rect key="frame" x="914" y="28" width="95" height="38"/>
+                                <rect key="frame" x="914" y="28" width="95" height="83"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBw-rS-dQM">
                                         <rect key="frame" x="0.0" y="0.0" width="95" height="38"/>
@@ -198,10 +186,24 @@
                                             <action selector="clearAll:" destination="goA-Ya-Al9" eventType="touchUpInside" id="hBA-Td-86Y"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV5-NN-jSh">
+                                        <rect key="frame" x="0.0" y="45" width="95" height="38"/>
+                                        <color key="backgroundColor" red="0.84313725490000002" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Delete">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteSelectedObject:" destination="goA-Ya-Al9" eventType="touchUpInside" id="fbq-BR-yxr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="LV5-NN-jSh" firstAttribute="width" secondItem="rBw-rS-dQM" secondAttribute="width" id="ck0-Cy-e9C"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qh0-xa-jX7" userLabel="save load">
-                                <rect key="frame" x="914" y="126" width="95" height="82"/>
+                                <rect key="frame" x="914" y="171" width="95" height="82"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8l-pW-f1I">
                                         <rect key="frame" x="0.0" y="0.0" width="95" height="36"/>
@@ -410,7 +412,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVY-fi-MOc">
-                                <rect key="frame" x="37" y="288" width="60" height="60"/>
+                                <rect key="frame" x="37" y="242" width="60" height="60"/>
                                 <color key="backgroundColor" red="0.8629205714" green="0.8629205714" blue="0.8629205714" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="ATM-aB-as7"/>
@@ -422,7 +424,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pRj-Fd-rtq" userLabel="expand shrink">
-                                <rect key="frame" x="44" y="403" width="45" height="110"/>
+                                <rect key="frame" x="44" y="357" width="45" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dM-Zv-ctH" userLabel="Expand">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
@@ -450,7 +452,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Za-g2-9OC" userLabel="left right">
-                                <rect key="frame" x="19" y="604" width="95" height="40"/>
+                                <rect key="frame" x="19" y="558" width="95" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mN7-SV-oKT">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -479,7 +481,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="oga-41-DHs" userLabel="Up down">
-                                <rect key="frame" x="48" y="553" width="40" height="142"/>
+                                <rect key="frame" x="48" y="507" width="40" height="142"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNG-sT-apB">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -508,7 +510,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UT1-c6-IR9" userLabel="Import Export">
-                                <rect key="frame" x="914" y="278" width="95" height="110"/>
+                                <rect key="frame" x="914" y="323" width="95" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcI-PL-FRa">
                                         <rect key="frame" x="0.0" y="0.0" width="95" height="50"/>
@@ -539,7 +541,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="72X-4b-x8r">
-                                <rect key="frame" x="920" y="468" width="83" height="38"/>
+                                <rect key="frame" x="920" y="513" width="83" height="38"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz3-Qm-gSS">
                                         <rect key="frame" x="0.0" y="0.0" width="83" height="38"/>
