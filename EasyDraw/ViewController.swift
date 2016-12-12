@@ -1051,7 +1051,7 @@ class ViewController: UIViewController,
                                 // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
                                 currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                                 
-                                currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                                // currentObject.scalingFactor = scalingFactor     // put here for smooth effect
                                 
                             }
                     },
@@ -1075,7 +1075,7 @@ class ViewController: UIViewController,
                                 // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
                                 currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                                 
-                                currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                                // currentObject.scalingFactor = scalingFactor     // put here for smooth effect
                                 
                             }
                     },
