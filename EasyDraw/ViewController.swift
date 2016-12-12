@@ -851,7 +851,7 @@ class ViewController: UIViewController,
         let imageFrame = CGRect(origin: CGPoint(x: originX, y : originY), size: CGSize(width: fieldWidth, height: fieldHeight))
 
         let textField = MyTextField(frame: imageFrame)
-        textField.backgroundColor = UIColor.white
+        textField.backgroundColor = UIColor.white.withAlphaComponent(0.3) // UIColor.white
         textField.textAlignment = .center
         textField.font = .systemFont(ofSize: 30)
 
@@ -1043,11 +1043,13 @@ class ViewController: UIViewController,
                         animations: {
                             let tempObject = currentObject
                             
-                            tempObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            // tempObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            tempObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                             
                             if (tempObject.frame.minX > self.canvas.bounds.minX && tempObject.frame.maxX < self.canvas.bounds.maxX && tempObject.frame.minY > self.canvas.bounds.minY && tempObject.frame.maxY < self.canvas.bounds.maxY) {
                                 
-                                currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                                 
                                 currentObject.scalingFactor = scalingFactor     // put here for smooth effect
                                 
@@ -1065,11 +1067,13 @@ class ViewController: UIViewController,
                         animations: {
                             let tempObject = currentObject
                             
-                            tempObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            // tempObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            tempObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                             
                             if (tempObject.frame.minX > self.canvas.bounds.minX && tempObject.frame.maxX < self.canvas.bounds.maxX && tempObject.frame.minY > self.canvas.bounds.minY && tempObject.frame.maxY < self.canvas.bounds.maxY) {
                                 
-                                currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                                 
                                 currentObject.scalingFactor = scalingFactor     // put here for smooth effect
                                 
@@ -1085,7 +1089,8 @@ class ViewController: UIViewController,
                     UIView.animate(
                         withDuration: objectDrawing.scalingDuration,
                         animations: {
-                            currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                             currentObject.scalingFactor = scalingFactor     // put here for smooth effect
 
                     },
