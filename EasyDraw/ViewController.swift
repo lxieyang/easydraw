@@ -1051,7 +1051,7 @@ class ViewController: UIViewController,
                                 // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
                                 currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                                 
-                                // currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                                currentObject.scalingFactor = scalingFactor     // put here for smooth effect
                                 
                             }
                     },
@@ -1075,12 +1075,12 @@ class ViewController: UIViewController,
                                 // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
                                 currentObject.transform = currentObject.transform.scaledBy(x: scale, y: scale)
                                 
-                                // currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                                currentObject.scalingFactor = scalingFactor     // put here for smooth effect
                                 
                             }
                     },
                         completion: { finished in
-                            //currentObject.scalingFactor = scalingFactor
+                            // currentObject.scalingFactor = scalingFactor
                     })
                 }
             } else if let currentObject = objects[selected]! as? MyTextField {
@@ -1095,7 +1095,7 @@ class ViewController: UIViewController,
 
                     },
                         completion: { finished in
-                            //currentObject.scalingFactor = scalingFactor
+                            // currentObject.scalingFactor = scalingFactor
                     })
                 }
             }
