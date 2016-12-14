@@ -942,8 +942,24 @@ class ViewController: UIViewController,
     }
 
     @IBAction func selectObject(_ sender: AnyObject) {
-        let objectID = objects.keys.first
-        select(objectID: objectID)
+        if selectedObjectID == nil {
+            let objectID = objects.keys.first
+            select(objectID: objectID)
+        } else {
+            let dialog = UIAlertController(
+                title: "Please select an object first! 😜",
+                message: nil,
+                preferredStyle: UIAlertControllerStyle.alert)
+            present(
+                dialog,
+                animated: true,
+                completion: {
+                    dialog.view.superview?.isUserInteractionEnabled = true
+                    dialog.view.superview?.addGestureRecognizer(UITapGestureRecognizer(
+                        target: self, action: #selector(self.alertClose(_:))))
+            })
+
+        }
     }
     
     @IBAction func selectPrevObject(_ sender: AnyObject) {
@@ -1022,7 +1038,271 @@ class ViewController: UIViewController,
         indexes.removeAll()
         selectedObjectID = nil
     }
+
+
+    @IBAction func widthIncrease(_ sender: UIButton) {
+        let canvasWidth = self.canvas.frame.width
+        let maxWidthFactor = canvasWidth / objectDrawing.initialObjectSize
+        let maxScalingFactor = Double(maxWidthFactor) * 0.9
+        let minScalingFactor = Double(0.3)
+
+        let scale = objectDrawing.scalingIncreaseFactor
+
+        if let selected = selectedObjectID {
+            // let currentObject = objects[selected]!
+            if let currentObject = objects[selected]! as? MyView {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+
+                                // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                currentObject.transform = currentObject.transform.scaledBy(x: scale, y: 1)
+
+                                currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+
+
+                    },
+                        completion: { finished in
+                            //currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            } else if let currentObject = objects[selected]! as? MyImageView {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+
+                                // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                currentObject.transform = currentObject.transform.scaledBy(x: scale, y: 1)
+
+                                currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                    },
+                        completion: { finished in
+                            // currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            } else if let currentObject = objects[selected]! as? MyTextField {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.transform = currentObject.transform.scaledBy(x: scale, y: 1)
+                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+
+                    },
+                        completion: { finished in
+                            // currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            }
+        } else {
+            alertOpen()
+        }
+
+    }
+
+    @IBAction func widthDecrease(_ sender: UIButton) {
+                let canvasWidth = self.canvas.frame.width
+                let maxWidthFactor = canvasWidth / objectDrawing.initialObjectSize
+                let maxScalingFactor = Double(maxWidthFactor) * 0.9
+                let minScalingFactor = Double(0.3)
+        
+                let scale = objectDrawing.scalingDecreaseFactor
+        
+                if let selected = selectedObjectID {
+                    // let currentObject = objects[selected]!
+                    if let currentObject = objects[selected]! as? MyView {
+                        let scalingFactor = currentObject.scalingFactor * scale
+                        if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                            UIView.animate(
+                                withDuration: objectDrawing.scalingDuration,
+                                animations: {
+                                   //
+                                        // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                        currentObject.transform = currentObject.transform.scaledBy(x: scale, y: 1)
+        
+                                        currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+        
+
+                            },
+                                completion: { finished in
+                                    //currentObject.scalingFactor = scalingFactor
+                            })
+                        }
+                    } else if let currentObject = objects[selected]! as? MyImageView {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+        
+                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.transform = currentObject.transform.scaledBy(x: scale, y: 1)
+        
+                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                    },
+                        completion: { finished in
+                            // currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            } else if let currentObject = objects[selected]! as? MyTextField {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.transform = currentObject.transform.scaledBy(x: scale, y: 1)
+                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+        
+                    },
+                        completion: { finished in
+                            // currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            }
+                } else {
+                    alertOpen()
+                }
+
+    }
     
+
+    @IBAction func heightDecrease(_ sender: UIButton) {
+                let canvasHeight = self.canvas.frame.height
+                let maxHeightFactor = canvasHeight / objectDrawing.initialObjectSize
+                let maxScalingFactor = Double(maxHeightFactor) * 0.9
+                let minScalingFactor = Double(0.3)
+        
+                let scale =  objectDrawing.scalingDecreaseFactor
+        
+                if let selected = selectedObjectID {
+                    // let currentObject = objects[selected]!
+                    if let currentObject = objects[selected]! as? MyView {
+                        let scalingFactor = currentObject.scalingFactor * scale
+                        if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                            UIView.animate(
+                                withDuration: objectDrawing.scalingDuration,
+                                animations: {
+        
+                                    // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                    currentObject.transform = currentObject.transform.scaledBy(x: 1, y: scale)
+        
+                                    currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                            },
+                                completion: { finished in
+                                    //currentObject.scalingFactor = scalingFactor
+                            })
+                        }
+                    } else if let currentObject = objects[selected]! as? MyImageView {
+                        let scalingFactor = currentObject.scalingFactor * scale
+                        if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                            UIView.animate(
+                                withDuration: objectDrawing.scalingDuration,
+                                animations: {
+        
+                                    // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                    currentObject.transform = currentObject.transform.scaledBy(x: 1, y: scale)
+        
+                                    currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                            },
+                                completion: { finished in
+                                    // currentObject.scalingFactor = scalingFactor
+                            })
+                        }
+                    } else if let currentObject = objects[selected]! as? MyTextField {
+                        let scalingFactor = currentObject.scalingFactor * scale
+                        if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                            UIView.animate(
+                                withDuration: objectDrawing.scalingDuration,
+                                animations: {
+                                    // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                    currentObject.transform = currentObject.transform.scaledBy(x: 1, y: scale)
+                                    currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+        
+                            },
+                                completion: { finished in
+                                    // currentObject.scalingFactor = scalingFactor
+                            })
+                        }
+                    }
+                } else {
+                    alertOpen()
+                }
+
+    }
+
+    @IBAction func heightIncrease(_ sender: UIButton) {
+        let canvasHeight = self.canvas.frame.height
+        let maxHeightFactor = canvasHeight / objectDrawing.initialObjectSize
+        let maxScalingFactor = Double(maxHeightFactor) * 0.9
+        let minScalingFactor = Double(0.3)
+
+        let scale = objectDrawing.scalingIncreaseFactor
+
+        if let selected = selectedObjectID {
+            // let currentObject = objects[selected]!
+            if let currentObject = objects[selected]! as? MyView {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+
+                                // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                                currentObject.transform = currentObject.transform.scaledBy(x: 1, y: scale)
+
+                                currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                    },
+                        completion: { finished in
+                            //currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            } else if let currentObject = objects[selected]! as? MyImageView {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+
+                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.transform = currentObject.transform.scaledBy(x: 1, y: scale)
+
+                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+                    },
+                        completion: { finished in
+                            // currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            } else if let currentObject = objects[selected]! as? MyTextField {
+                let scalingFactor = currentObject.scalingFactor * scale
+                if Double(scalingFactor) >= minScalingFactor && Double(scalingFactor) <= maxScalingFactor {
+                    UIView.animate(
+                        withDuration: objectDrawing.scalingDuration,
+                        animations: {
+                            // currentObject.transform = CGAffineTransform(scaleX: scalingFactor , y: scalingFactor)
+                            currentObject.transform = currentObject.transform.scaledBy(x: 1, y: scale)
+                            currentObject.scalingFactor = scalingFactor     // put here for smooth effect
+
+                    },
+                        completion: { finished in
+                            // currentObject.scalingFactor = scalingFactor
+                    })
+                }
+            }
+        } else {
+            alertOpen()
+        }
+
+    }
+
+    
+
     @IBAction func scaleIncrease(_ sender: UIButton) {
         let canvasWidth = self.canvas.frame.width
         let canvasHeight = self.canvas.frame.height
