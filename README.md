@@ -1,4 +1,4 @@
-# Project EasyDraw: An Addition to Assisitive Technology
+# Project EasyDraw: An Addition to Assistive Technology
 
 ![App Icon](./preview/icon.png)
 
